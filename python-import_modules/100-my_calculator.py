@@ -17,10 +17,11 @@ if __name__ == "__main__":
         a = int(sys.argv[1])
         b = int(sys.argv[3])
         if operator == "+":
-            print("{} + {} = {}".format(a, b, calculator_1.add(a, b)))
+            result = calculator_1.add(a, b)
         elif operator == "-":
-            print("{} - {} = {}".format(a, b, calculator_1.sub(a, b)))
+            result = calculator_1.sub(a, b)
         elif operator == "*":
-            print("{} * {} = {}".format(a, b, calculator_1.mul(a, b)))
+            result = calculator_1.mul(a, b)
         elif operator == "/":
-            print("{} / {} = {}".format(a, b, calculator_1.div(a, b)))
+            result = calculator_1.div(a, b)
+        print("{} {} {} = {}".format(a, operator, b, result))
