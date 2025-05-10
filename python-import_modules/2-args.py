@@ -6,8 +6,8 @@ if __name__ == "__main__":
         print("0 arguments.")
     else:
         if arg_count == 1:
-            print("{} argument: ".format(arg_count))
+            print("{} argument:".format(arg_count))
         else:
-            print("{} arguments: ".format(arg_count))
+            print("{} arguments:".format(arg_count))
         for i in range(1, len(argv)):
             print("{}: {}".format(i, argv[i]))
