@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import sys
-from calculator_1 import add, sub, mul, div
+import calculator_1
 
 if __name__ == "__main__":
 
@@ -17,10 +17,10 @@ if __name__ == "__main__":
         a = int(sys.argv[1])
         b = int(sys.argv[3])
         if operator == "+":
-            print("{} + {} = {}".format(a, b, add(a, b)))
+            print("{} + {} = {}".format(a, b, calculator_1.add(a, b)))
         elif operator == "-":
-            print("{} - {} = {}".format(a, b, sub(a, b)))
+            print("{} - {} = {}".format(a, b, calculator_1.sub(a, b)))
         elif operator == "*":
-            print("{} * {} = {}".format(a, b, mul(a, b)))
+            print("{} * {} = {}".format(a, b, calculator_1.mul(a, b)))
         elif operator == "/":
-            print("{} / {} = {}".format(a, b, div(a, b)))
+            print("{} / {} = {}".format(a, b, calculator_1.div(a, b)))
