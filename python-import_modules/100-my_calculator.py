@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-import sys
-import calculator_1
 if __name__ == "__main__":
+    import sys
+    import calculator_1
 
     arg_count = len(sys.argv) - 1
     if arg_count != 3:
