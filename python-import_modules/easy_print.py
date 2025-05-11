@@ -22,6 +22,6 @@ import: statement
 e.g., import math
       print(math.sqrt(9))
 __import__: built-in function 
-e.g., mod = __import__('math')     # you can importa module as a string 
+e.g., mod = __import__('math')     # you can import a module as a string 
       print(mod.sqrt(9))
 """
