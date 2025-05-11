@@ -12,3 +12,16 @@ os.write(fd, data): argument 1 - file descriptor for standard output (stdout)
 """
 import os
 os.write(1, b"#pythoniscool\n")
+
+# another solution
+# __import__('os').write(1, b"#pythoniscool\n")
+
+"""
+difference between import and __import__
+import: statement
+e.g., import math
+      print(math.sqrt(9))
+__import__: built-in function 
+e.g., mod = __import__('math')     # you can importa module as a string 
+      print(mod.sqrt(9))
+"""
