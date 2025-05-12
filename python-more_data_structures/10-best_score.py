@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-from curses import keyname
-
-
 def best_score(a_dictionary):
     if not a_dictionary:
         return None
