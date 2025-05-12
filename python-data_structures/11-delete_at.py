@@ -4,3 +4,9 @@ def delete_at(my_list=[], idx=0):
         return my_list
     del my_list[idx]
     return my_list
+
+
+# Another way to remove the item at idx position
+"""
+my_list.remove(idx)
+"""
