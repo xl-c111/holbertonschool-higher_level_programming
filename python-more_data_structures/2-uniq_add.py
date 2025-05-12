@@ -15,7 +15,7 @@ def uniq_add(my_list=[]):
             uniq_list.append(item)
 '''
 
-# Another way to get a uniq list - 1
+# Another way to get a uniq list - 2
 '''
 from collections import OrderedDict
 
