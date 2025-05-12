@@ -18,7 +18,6 @@ return new_matrix
 # combined logic: outer loop builds new row, inner loop squares each element in that row
 
 """
-def square_matrix_simple(matrix=[]):
     new_matrix = [[element**2 for element in row] for row in matrix]
     return new_matrix
 """
