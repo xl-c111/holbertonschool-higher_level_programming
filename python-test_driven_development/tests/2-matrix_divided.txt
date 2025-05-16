@@ -68,14 +68,15 @@ Test - div can’t be equal to 0
     ...
     ZeroDivisionError: division by zero
 
-Test - div can’t be equal to 0
+Test - all values equal to 0.0
     
     >>> matrix = [
     ...     [0, 0, 0],
     ...     [0, 0, 0]
     ... ]
     >>> matrix_divided(matrix, 2)
-    >>> [[0.0, 0.0], [0.0, 0.0]]
+    [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
 
 Test - one argument missing
     >>> matrix = [
@@ -97,5 +98,5 @@ Test - two arguments missing
     ...
     TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
 
-    
+
 
