@@ -67,3 +67,35 @@ Test - div can’t be equal to 0
     Traceback (most recent call last):
     ...
     ZeroDivisionError: division by zero
+
+Test - div can’t be equal to 0
+    
+    >>> matrix = [
+    ...     [0, 0, 0],
+    ...     [0, 0, 0]
+    ... ]
+    >>> matrix_divided(matrix, 2)
+    >>> [[0.0, 0.0], [0.0, 0.0]]
+
+Test - one argument missing
+    >>> matrix = [
+    ...     [1, 2, 3],
+    ...     [5, 4, 6]
+    ... ]
+    >>> matrix_divided(matrix)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+Test - two arguments missing
+    >>> matrix = [
+    ...     [1, 2, 3],
+    ...     [5, 4, 6]
+    ... ]
+    >>> matrix_divided()
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+    
+
