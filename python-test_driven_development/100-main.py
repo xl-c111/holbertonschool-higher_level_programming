@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 matrix_mul = __import__('100-matrix_mul').matrix_mul
 
-# print(matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]]))
-# print(matrix_mul([[1, 2]], [[3, 4], [5, 6]]))
+print(matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]]))
+print(matrix_mul([[1, 2]], [[3, 4], [5, 6]]))
 # print(matrix_mul("hello world", [[1, 2], [3, 4]]))
 # print(matrix_mul([[1, 2], [3, 4]], True))
 # print(matrix_mul([1, 2, 3], [[1, 2], [3, 4]]))
@@ -11,10 +11,10 @@ matrix_mul = __import__('100-matrix_mul').matrix_mul
 # print(matrix_mul([[1, 2], [3, 4]], []))
 # print(matrix_mul([[1, 'x'], [3, 4]], [[1, 2], [3, 4]]))
 # print(matrix_mul([[1, 2], [3, 4]], [[1, 2], ['a', 4]]))
-print(matrix_mul([[1, 2, 3], [4, 5]], [[1, 2], [3, 4], [5, 6]]))
-print(matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4, 5]]))
-print(matrix_mul([[1, 2]], [[1, 2], [3, 4], [5, 6]]))
-print(matrix_mul([[5]], [[3]]))
-print(matrix_mul([[1.0, 2.0], [3.0, 4.0]], [[1, 2], [3, 4]]))
-print(matrix_mul([[]], [[1, 2], [3, 4]]))
-print(matrix_mul([[1, 2], [3, 4]], [[]]))
+# print(matrix_mul([[1, 2, 3], [4, 5]], [[1, 2], [3, 4], [5, 6]]))
+# print(matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4, 5]]))
+# print(matrix_mul([[1, 2]], [[1, 2], [3, 4], [5, 6]]))
+# print(matrix_mul([[5]], [[3]]))
+# print(matrix_mul([[1.0, 2.0], [3.0, 4.0]], [[1, 2], [3, 4]]))
+# print(matrix_mul([[]], [[1, 2], [3, 4]]))
+# print(matrix_mul([[1, 2], [3, 4]], [[]]))
