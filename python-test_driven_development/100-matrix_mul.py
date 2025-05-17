@@ -1,5 +1,33 @@
 #!/usr/bin/python3
+"""
+This module provides a function to multiply two matrices.
+
+It checks type and value of two matrixes to ensure that the inputs are proper
+matrices.
+It raises informative errors when the inputs do not meet these requirements.
+"""
+
+
 def matrix_mul(m_a, m_b):
+    """
+    Multiplies two matrices and returns the result as a new matrix.
+
+    Args:
+        m_a (list of lists of int/float): The first matrix to multiply.
+        m_b (list of lists of int/float): The second matrix to multiply.
+
+    Returns:
+        list of lists of int/float: The product matrix.
+
+    Raises:
+        TypeError: If either m_a or m_b is not a list, not a list of lists,
+                   not a rectangle.
+                   or contains elements that are not integers or floats,
+        ValueError: If either m_a or m_b is empty or contains empty rows,
+                    or if the matrices cannot be multiplied due to shape
+                    incompatibility.
+    """
+
     if not isinstance(m_a, list):
         raise TypeError("m_a must be a list")
     if not isinstance(m_b, list):
