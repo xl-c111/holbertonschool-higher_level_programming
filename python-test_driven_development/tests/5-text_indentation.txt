@@ -1,0 +1,48 @@
+The ``text_indentation`` module
+===============================
+
+Using ``text_indentation``
+---------------------------
+
+First import ``text_indentation`` from the ``5-text_indentation`` file:
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Test - typical case with punctuation and spacing:
+    >>> text_indentation("Hello.   How are you? Fine:   then go.")
+    Hello.
+    
+    How are you?
+    
+    Fine:
+    
+    then go.
+
+Test - with no ".", "?" and ":":
+    >>> text_indentation("This is a test with no punctuation")
+    This is a test with no punctuation
+
+Test - leading and trailing spaces:
+    >>> text_indentation("   Hi there.  What's up?   ")
+    Hi there.
+    
+    What's up?
+
+Test - multiple punctuation without space:
+    >>> text_indentation("One.Two?Three:Four.")
+    One.
+    
+    Two?
+    
+    Three:
+    
+    Four.
+
+Test - not a string:
+    >>> text_indentation(42)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+Test - empty string:
+    >>> text_indentation("")    # no output
