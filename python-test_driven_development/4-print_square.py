@@ -2,10 +2,9 @@
 """
 This module provides a function to print a square of size 'size' using
 the '#' character.
-It checks if size is a non-negative integer. 
-It raises TypeError if size is not an integer. 
-It raises ValueError if size is negative. 
-
+It checks if size is a non-negative integer.
+It raises TypeError if size is not an integer.
+It raises ValueError if size is negative.
 """
 
 
