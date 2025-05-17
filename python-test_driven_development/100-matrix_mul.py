@@ -24,8 +24,7 @@ def matrix_mul(m_a, m_b):
                    not a rectangle.
                    or contains elements that are not integers or floats,
         ValueError: If either m_a or m_b is empty or contains empty rows,
-                    or if the matrices cannot be multiplied due to shape
-                    incompatibility.
+                    or if the matrices cannot be multiplied.
     """
 
     if not isinstance(m_a, list):
