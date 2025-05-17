@@ -16,7 +16,7 @@ def text_indentation(text):
     leading spaces in the next printed segment.
 
     Args:
-
+        Test: the given test.
     Raises:
         TypeError: If the input is not a string.
 
