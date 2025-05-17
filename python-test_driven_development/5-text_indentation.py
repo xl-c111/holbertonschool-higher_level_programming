@@ -39,4 +39,4 @@ def text_indentation(text):
             continue
         i += 1
     if temp.strip():
-        print(temp.strip())
+        print(temp.strip(), end="")
