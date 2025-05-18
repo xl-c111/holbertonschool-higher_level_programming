@@ -1,0 +1,83 @@
+The ``lazy_matrix_mul`` module
+==============================
+
+Using ``lazy_matrix_mul``
+-------------------------
+
+First import ``lazy_matrix_mul`` from the ``101-lazy_matrix_mul`` file:
+
+    >>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+Tests:
+
+    >>> m_a = [[1, 2], [3, 4]]
+    >>> m_b = [[5, 6], [7, 8]]
+    >>> lazy_matrix_mul(m_a, m_b)
+    array([[19, 22],
+           [43, 50]])
+
+Test - m_a is not a list
+    >>> lazy_matrix_mul("hello", [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    ...
+    TypeError: m_a must be a list
+
+Test - m_b is not a list
+    >>> lazy_matrix_mul([[1, 2], [3, 4]], "world")
+    Traceback (most recent call last):
+    ...
+    TypeError: m_b must be a list
+
+Test - m_a is not a list of lists
+    >>> lazy_matrix_mul([1, 2, 3], [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    ...
+    TypeError: m_a must be a list of lists
+
+Test - m_b is not a list of lists
+    >>> lazy_matrix_mul([[1, 2], [3, 4]], [1, 2, 3])
+    Traceback (most recent call last):
+    ...
+    TypeError: m_b must be a list of lists
+
+Test - m_a is empty
+    >>> lazy_matrix_mul([], [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    ...
+    ValueError: m_a can't be empty
+
+Test - m_b is empty
+    >>> lazy_matrix_mul([[1, 2], [3, 4]], [])
+    Traceback (most recent call last):
+    ...
+    ValueError: m_b can't be empty
+
+Test - m_a contains a non-number
+    >>> lazy_matrix_mul([[1, "a"], [3, 4]], [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    ...
+    TypeError: m_a should contain only integers or floats
+
+Test - m_b contains a non-number
+    >>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], ["b", 4]])
+    Traceback (most recent call last):
+    ...
+    TypeError: m_b should contain only integers or floats
+
+Test - m_a has inconsistent row size
+    >>> lazy_matrix_mul([[1, 2], [3]], [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    ...
+    TypeError: each row of m_a must be of the same size
+
+Test - m_b has inconsistent row size
+    >>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3]])
+    Traceback (most recent call last):
+    ...
+    TypeError: each row of m_b must be of the same size
+
+Test - m_a and m_b can't be multiplied (dimension mismatch)
+    >>> lazy_matrix_mul([[1, 2, 3], [4, 5, 6]], [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    ...
+    ValueError: m_a and m_b can't be multiplied
