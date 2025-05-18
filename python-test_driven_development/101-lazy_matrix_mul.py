@@ -1,9 +1,41 @@
 #!/usr/bin/python3
+"""
+This module provides a function for multiplying two matrices using NumPy.
+
+It validates that both matrices are proper lists of lists containing only
+integers or floats, with consistent row sizes, and compatible dimensions
+for multiplication. 
+It returns a NumPy array.
+
+Raises:
+    TypeError: If the input matrices are not lists of lists of numbers,
+               or have inconsistent row sizes.
+    ValueError: If either matrix is empty, or if the matrices cannot be
+               multiplied due to dimension mismatch.
+"""
+
 
 import numpy as np
 
 
 def lazy_matrix_mul(m_a, m_b):
+    """
+    Multiplies two matrices using NumPy after validating input types and
+    shapes.
+
+    Args:
+        m_a (list of lists of int/float): The first matrix to multiply.
+        m_b (list of lists of int/float): The second matrix to multiply.
+
+    Returns:
+        The resulting product matrix.
+
+    Raises:
+        TypeError: If m_a or m_b is not a list of lists of integers/floats,
+            or if their rows are not all the same size.
+        ValueError: If m_a or m_b is empty, or if the matrices cannot
+                    be multiplied.
+    """
     if not isinstance(m_a, list):
         raise TypeError("m_a must be a list")
     if not isinstance(m_b, list):
