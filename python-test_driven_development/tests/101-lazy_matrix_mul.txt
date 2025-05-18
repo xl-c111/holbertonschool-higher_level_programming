@@ -33,7 +33,7 @@ Test - not numbers inside matrix
     >>> lazy_matrix_mul([[5, "6"], [7, 8]], [[5, 6], [7, 8]])
     Traceback (most recent call last):
         ...
-    TypeError: can't multiply sequence by non-int of type 'str'
+    TypeError: invalid data type for einsum
 
 Test - empty input
     >>> lazy_matrix_mul([], [[5, 6], [7, 8]])

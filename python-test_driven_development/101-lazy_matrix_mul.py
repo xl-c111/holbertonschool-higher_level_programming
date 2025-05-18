@@ -33,4 +33,5 @@ def lazy_matrix_mul(m_a, m_b):
         All exceptions are raised by NumPy and are not handled
         by this function.
     """
+
     return np.matmul(m_a, m_b)
