@@ -116,20 +116,21 @@ class Square:
         The number of spaces printed before each line is determinded by
             position[0].
         """
-        if self.__size == 0:
-            print()
-            # return ensures function stops immediately after printing an
-            # empty line when size == 0
-            return
-        for _ in range(self.position[1]):
-            # the underscore _ used as a variable name when loop variable
-            #        itself is not needed
-            # this loop repeats the intended code self.position[1] times.
-            print()
-        i = 0
-        while i < self.__size:
-            print("{}{}".format((' ' * self.position[0]), ('#' * self.__size)))
-            i += 1
+        # if self.__size == 0:
+        #     print()
+        #     # return ensures function stops immediately after printing an
+        #     # empty line when size == 0
+        #     return
+        # for _ in range(self.position[1]):
+        #     # the underscore _ used as a variable name when loop variable
+        #     #        itself is not needed
+        #     # this loop repeats the intended code self.position[1] times.
+        #     print()
+        # i = 0
+        # while i < self.__size:
+        #     print("{}{}".format((' ' * self.position[0]), ('#' * self.__size)))
+        #     i += 1
+        print(self.__str__())
 
     def __str__(self):
         """
