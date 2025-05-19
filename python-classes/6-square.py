@@ -1,22 +1,23 @@
 #!/usr/bin/python3
 """
-This module provides a simple implementation of an empty Square Class
-with validated size attribute.
+This module defines a Square class that supports size and position,
+and can print the square with custom spacing.
 """
 
 
 class Square:
     """
-    Represents a square with given size.
+    Represents a square with given size and position.
 
     Attributes
         __size: integer - the length of sides of square.
+        ————position: tuple - the (x, y) offset for printing
 
     Methods
         __init__(size=0): initializes a Square instance with a given size.
+        area(): return the area of the square. 
+        my_print(): print the square to stdout with offset.
 
-    Returns:
-        the area of the square.
     """
 
     def __init__(self, size=0, position=(0, 0)):
@@ -25,6 +26,7 @@ class Square:
 
         Arguments
             size : int - The length of the sides of the square(default is 0).
+            position: the (x, y) position offset for printing.
 
         """
         # Use self.size = size inside __init__ to trigger setter to validate
