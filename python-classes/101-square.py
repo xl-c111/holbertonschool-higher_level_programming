@@ -155,3 +155,11 @@ class Square:
                 (' ' * self.position[0]), ('#' * self.__size)))
         return "\n".join(result)
         print(self.__str__())
+
+
+"""
+join syntax: separator.iterable()
+separator: the string placed between elements of iterable.
+iterable: a sequence of string(list, tuple) to join together. 
+
+"""
