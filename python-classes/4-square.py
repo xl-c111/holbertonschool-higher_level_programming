@@ -66,7 +66,7 @@ class Square:
         """
         return the area of the square.
 
-        Parameters:
+        Returns
             int - the area of the square.
         """
 
