@@ -78,7 +78,7 @@ class Square:
         If size is 0, prints an empty line.
         """
         if self.__size == 0:
-            print("--")
+            print("")
         i = 0
         while i < self.__size:
             print("{}".format('#' * self.__size))
