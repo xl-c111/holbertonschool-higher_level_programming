@@ -110,26 +110,15 @@ class Square:
     def my_print(self):
         """
         prints in stdout the square with the character #.
-        If size is 0, prints an empty line.
-        The number of blank lines printed above the square is
+        - If size is 0, prints an empty line.
+        - The number of blank lines printed above the square is
             determinded by position[1].
-        The number of spaces printed before each line is determinded by
+        - The number of spaces printed before each line is determinded by
             position[0].
+         It internally calls the __str__() method to generate the formatted
+
         """
-        # if self.__size == 0:
-        #     print()
-        #     # return ensures function stops immediately after printing an
-        #     # empty line when size == 0
-        #     return
-        # for _ in range(self.position[1]):
-        #     # the underscore _ used as a variable name when loop variable
-        #     #        itself is not needed
-        #     # this loop repeats the intended code self.position[1] times.
-        #     print()
-        # i = 0
-        # while i < self.__size:
-        #     print("{}{}".format((' ' * self.position[0]), ('#' * self.__size)))
-        #     i += 1
+
         print(self.__str__())
 
     def __str__(self):
@@ -161,6 +150,6 @@ class Square:
 """
 join syntax: separator.iterable()
 separator: the string placed between elements of iterable.
-iterable: a sequence of string(list, tuple) to join together. 
+iterable: a sequence of string(list, tuple) to join together.
 
 """
