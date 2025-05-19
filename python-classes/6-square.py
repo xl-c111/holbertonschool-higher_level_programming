@@ -116,8 +116,13 @@ class Square:
         """
         if self.__size == 0:
             print()
+            # return ensures function stops immediately after printing an
+            # empty line when size == 0
             return
-        if self.position[1] > 0:
+        for _ in range(self.position[1]):
+            # the underscore _ used as a variable name when loop variable
+            #        itself is not needed
+            # this loop repeats the intended code self.position[1] times.
             print()
         i = 0
         while i < self.__size:
