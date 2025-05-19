@@ -10,7 +10,7 @@ class Square:
     Represents a square with given size.
 
     Attributes
-        _size: integer - the length of sides of square.
+        __size: integer - the length of sides of square.
 
     Methods
         __init__(size=0): initializes a Square instance with a given size.
@@ -21,7 +21,7 @@ class Square:
         """
         Initializes a Square with given size.
 
-        Arguments
+        Parameters
             size : int - The length of the sides of the square.
 
         Raises

@@ -20,7 +20,7 @@ class Square:
         """
         Initializes a Square with given size.
 
-        Arguments
+        Parameters
             size : int or float - The length of the sides of the square.
 
 
