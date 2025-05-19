@@ -115,7 +115,8 @@ class Square:
             determinded by position[1].
         - The number of spaces printed before each line is determinded by
             position[0].
-         It internally calls the __str__() method to generate the formatted
+        It internally calls the __str__() method to generate the formatted
+            string.
 
         """
 
