@@ -140,7 +140,7 @@ class Rectangle:
             return ""
 
         result = []
-        line = str(self.print_symbol * self.width)
+        line = str(self.print_symbol) * self.width
         for i in range(self.height):
             result.append(line)
         return "\n".join(result)
