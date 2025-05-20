@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 class Rectangle:
     """
-    This module provides a simple implementation of an empty rectangle Class.
+    This module provideds a simple implementation of empty rectangle Class.
     """
 
     def __init__(self):
