@@ -117,7 +117,7 @@ class Rectangle:
             return ""
         result = []
         for i in range(self.__height):
-            result.append('#' * (self.__height * self.__width))
+            result.append('#' * self.__width)
         return "\n".join(result)
 
     def my_print(self):
