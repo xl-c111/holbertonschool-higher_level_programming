@@ -11,7 +11,7 @@ class Square:
 
     Attributes
         __size: integer - the length of sides of square.
-        ————position: tuple - the (x, y) offset for printing
+        __position: tuple - the (x, y) offset for printing
 
     Methods
         __init__(size=0): initializes a Square instance with a given size.
