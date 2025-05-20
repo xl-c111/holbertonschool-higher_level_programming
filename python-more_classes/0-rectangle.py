@@ -6,10 +6,10 @@ class Rectangle:
 
     def __init__(self):
         """
-    Represents a rectangle (no attributes or methods).
+        Represents a rectangle (no attributes).
 
-    Methods
-        __init__(): initializes an instance of the rectangle class.
-    """
+        Methods
+           __init__(): initializes an instance of the rectangle class.
+        """
 
         pass
