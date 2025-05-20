@@ -1,15 +1,17 @@
 #!/usr/bin/python3
+"""
+This module provideds a simple implementation of empty rectangle Class.
+"""
+
+
 class Rectangle:
     """
-    This module provideds a simple implementation of empty rectangle Class.
+    Represents a rectangle (no attributes).
+
+    Methods
+        __init__(): initializes an instance of the rectangle class.
     """
 
     def __init__(self):
-        """
-        Represents a rectangle (no attributes).
-
-        Methods
-           __init__(): initializes an instance of the rectangle class.
-        """
-
+        """Initializes an empty rectangle instance."""
         pass
