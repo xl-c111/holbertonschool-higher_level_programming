@@ -48,6 +48,8 @@ class Rectangle:
         self.width = width
         self.height = height
         Rectangle.number_of_instances += 1
+        # copy the class attribute to the instance attribute
+        # each object gets its own attribute when created, not effected by changing of class attribute
         self.print_symbol = Rectangle.print_symbol
 
     @property

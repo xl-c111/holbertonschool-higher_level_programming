@@ -26,9 +26,11 @@ class Rectangle:
             width : int - the width of the rectangle (defeult 0)
             height: int - the height of the rectangle (default 0)
         """
-        self.width = width
+        self.width = width         # instance attribure
         self.height = height
-        Rectangle.number_of_instances += 1
+        # number_of_instances is a class attribute, shared by all instances
+        # everytime a new instance is created, python will call __init__(self) automatically to initialize the new object
+        Rectangle.number_of_instances += 1     # class attribute
 
     @property
     def width(self):
