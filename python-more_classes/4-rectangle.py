@@ -133,4 +133,3 @@ class Rectangle:
         generate the formatted string.
         """
         print(self.__str__())
-        print(self.__repr__())
