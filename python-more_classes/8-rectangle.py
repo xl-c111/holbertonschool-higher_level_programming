@@ -193,8 +193,8 @@ class Rectangle:
 
         # no matter where you call an instance method, just use
         # instance.method(), python will handle the self for you
-        area_1 = rect_1.area()
-        area_2 = rect_2.area()
+        area_1 = rect_1.area()     # area_1 = Rectangle.area(rect_1)
+        area_2 = rect_2.area()     # area_2 = Rectangle.area(rect_2)
 
         if area_1 == area_2:
             return rect_1
