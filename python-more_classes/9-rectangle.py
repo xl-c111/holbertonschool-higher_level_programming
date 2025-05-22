@@ -58,7 +58,6 @@ class Rectangle:
         Returns
             int - The width of the rectangle.
         """
-        # inside property getter/setter method, always use peivate attribute
         return self.__width
 
     @width.setter
@@ -115,7 +114,6 @@ class Rectangle:
             int - the area of the rectangle.
 
         """
-        # outside property getter/setter method, always use public attribute.
         return self.width * self.height
 
     def perimeter(self):
@@ -191,8 +189,6 @@ class Rectangle:
         if not isinstance(rect_2, Rectangle):
             raise TypeError("rect_2 must be an instance of Rectangle")
 
-        # no matter where you call an instance method, just use
-        # instance.method(), python will handle the self for you
         area_1 = rect_1.area()
         area_2 = rect_2.area()
 
