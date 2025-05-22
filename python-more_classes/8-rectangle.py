@@ -206,15 +206,15 @@ class Rectangle:
 
 """
 
-self.__width: - inside of getter/setter 
+self.__width: - inside of getter/setter methods
               - this directly accesses the private variable
               - it bypasses the property getter/setter, so you don't gey any of checks or logic you may have added. 
 
 self.width: - for all class methods, instance methods, external code, always use self.width
-            - access the property, which usually call the method you defined as property
+            - access the property, which usually call the method you defined as property def width(self):
             - python automatically turns self.width into a call to self.__class__.width.__get__(self), 
               which is the property's getter
-            - this allows you to add all sort of control logic, such as  type checking, value range restrictions,
+            - this allows you to add all sort of control logic, such as type checking, value range restrictions,
               read-only protection, automatic updates, and more 
             - self.width returns the value of self.__width, they give you the same data, only the access path is different
 
