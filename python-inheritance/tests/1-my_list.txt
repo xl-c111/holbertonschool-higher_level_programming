@@ -42,3 +42,16 @@ Test - print_sorted with repeated elements:
     [1, 3, 3]
     >>> print(repeat_list)
     [3, 1, 3]
+
+Test - print_sorted with negative numbers and unsorted list:
+
+    >>> neg_list = MyList()
+    >>> neg_list.append(3)
+    >>> neg_list.append(-5)
+    >>> neg_list.append(1)
+    >>> print(neg_list)
+    [3, -5, 1]
+    >>> neg_list.print_sorted()
+    [-5, 1, 3]
+    >>> print(neg_list)
+    [3, -5, 1]
