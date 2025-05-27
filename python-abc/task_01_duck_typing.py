@@ -40,8 +40,8 @@ class Rectangle(Shape):
 
     def __init__(self, width, height):
         """Initialize a Rectangle with the given width and height."""
-        self.width = abs(width)
-        self.height = abs(height)
+        self.width = width
+        self.height = height
 
     def area(self):
         """Calculate the area of the rectangle."""
@@ -54,5 +54,5 @@ class Rectangle(Shape):
 
 def shape_info(shape):
     """Print the area and perimeter of a shape object."""
-    print(f"Area: {shape.area()}")
-    print(f"Perimeter: {shape.perimeter()}")
+    print("Area: {}".format(shape.area()))
+    print("Perimeter: {}".format(shape.perimeter()))
