@@ -34,4 +34,11 @@ class VerboseList(list):
         item = self[index]
         print("Popped [{}] from the list.".format(item))
         # the argument of pop() must be an index, not a item value
-        super().pop(index)
+        return super().pop(index)
+
+
+"""
+the original list.pop() does two things:
+- remove the item at given index;
+- return the value that was removed
+"""
