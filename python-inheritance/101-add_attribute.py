@@ -19,6 +19,8 @@ def add_attribute(obj, attr, value):
     """
     # __dict__ stores all the writable attribute-value pairs
     if hasattr(obj, "__dict__"):
+        # using __dict__ to add attribute, obj.__dict__[key] = value
+        # using __dict__ to update attribute, obj.__dict__[key] = new_value
         obj.__dict__[attr] = value
     else:
         raise TypeError("can't add new attribute")
