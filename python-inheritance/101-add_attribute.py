@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+"""
+This module provides a function to add a new attribute to an object
+if possible.
+"""
+
+
 def add_attribute(obj, attr, value):
     """
     Add a new attribute to an object if possible.
@@ -22,5 +28,5 @@ def add_attribute(obj, attr, value):
 Syntax: hasattr(obj, attr)
 
 obj: the object whose attributes has to be checked
-attr: the attribute need to be checked 
+attr: the attribute need to be checked
 """
