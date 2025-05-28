@@ -17,7 +17,7 @@ def add_attribute(obj, attr, value):
     Raises:
         TypeError: If the attribute cannot be added to the object.
     """
-    # __dict__ stores all the writable attribute-value pairs
+    # check if the object has a __dict__ ot not, if so, by using __dict__ to add or modify attributes
     if hasattr(obj, "__dict__"):
         # using __dict__ to add attribute, obj.__dict__[key] = value
         # using __dict__ to update attribute, obj.__dict__[key] = new_value
