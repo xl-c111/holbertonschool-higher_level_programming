@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """
-    This module defines the MyInt class, which inherits from int and
-    inverts the equality operators.
-    """
+This module defines the MyInt class, which inherits from int and
+inverts the equality operators.
+"""
 
 
 class MyInt(int):
