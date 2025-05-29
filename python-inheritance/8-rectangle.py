@@ -1,30 +1,32 @@
 #!/usr/bin/python3
 """
 this module defines a BeseGeometry class.
-"""
+# """
 
 
-class BaseGeometry:
-    """
-    A base class for geometry-related operations.
-    """
+# class BaseGeometry:
+#     """
+#     A base class for geometry-related operations.
+#     """
 
-    def area(self):
-        """
-        Raise an Exception to indicate that the area method is not implemented.
-        """
-        raise Exception("area() is not implemented")
+#     def area(self):
+#         """
+#         Raise an Exception to indicate that the area method is not implemented.
+#         """
+#         raise Exception("area() is not implemented")
 
-    def integer_validator(self, name, value):
-        """
-        validate the value
-        """
-        # isinstance(value, int) will treat bool values (True/False) as int
-        # because bool is a subclass of int in Python
-        if type(value) is not int:
-            raise TypeError("{} must be an integer".format(name))
-        if value <= 0:
-            raise ValueError("{} must be greater than 0".format(name))
+#     def integer_validator(self, name, value):
+#         """
+#         validate the value
+#         """
+#         # isinstance(value, int) will treat bool values (True/False) as int
+#         # because bool is a subclass of int in Python
+#         if type(value) is not int:
+#             raise TypeError("{} must be an integer".format(name))
+#         if value <= 0:
+#             raise ValueError("{} must be greater than 0".format(name))
+
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
 class Rectangle(BaseGeometry):
