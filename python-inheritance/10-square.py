@@ -76,4 +76,4 @@ class Square(Rectangle):
         # when call super().area(), it'll look up the inheritance chain
         # super().area() inside Square will call the Rectangle version, not the
         # BaseGeometry version
-        return super().area()
+        return self.__size * self.__size
