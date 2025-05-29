@@ -30,7 +30,7 @@ class VerboseList(list):
         Remove and return the item at the given position in the list.
         If no index is specified, removes and returns the last item.
         """
-        # get the item at the specific index in the current
+        # get the item at the specific index in the current list
         item = self[index]
         print("Popped [{}] from the list.".format(item))
         # the argument of pop() must be an index, not a item value
