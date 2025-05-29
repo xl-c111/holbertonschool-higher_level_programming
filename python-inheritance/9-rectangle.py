@@ -38,6 +38,8 @@ class Rectangle(BaseGeometry):
         """
         Initialize a Rectangle instance.
         """
+        # BaseGeometry.integer_validator(self, "width", width)
+        # super().integer_validator("width", width)
         self.integer_validator("width", width)
         self.integer_validator("height", height)
         self.__width = width
