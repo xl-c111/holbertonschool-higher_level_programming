@@ -35,3 +35,28 @@ class Student:
         for key, value in json.items():
             #
             setattr(self, key, value)
+
+
+# workflow
+"""
+1, Using to_json() to export instance's attributes as a dict(often called a json dict). 
+e.g.
+s = Student("Tom", "Lee", 18)
+print(s.to_json())                             # {'first_name': 'Tom', 'last_name': 'Lee', 'age': 18}
+print(s.to_json(['first_name', 'age']))        # {'first_name': 'Tom', 'age': 18}
+
+2, Using reload_from_json() to import or update instance's attributes. 
+e.g. 
+s = Student("Tom", "Lee", 18)
+s.reload_from_json({'first_name': 'Alice', 'age': 25})
+print(s.to_json())                             # {'first_name': 'Alice', 'last_name': 'Lee', 'age': 25}
+"""
+# setattr() syntax
+"""
+setattr(object, name, value)
+
+object: The object whose attribute you want to set.
+name: The attribute name (as a string).
+value: The value to assign to the attribute.
+
+"""
