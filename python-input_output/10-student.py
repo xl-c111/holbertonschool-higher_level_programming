@@ -42,13 +42,13 @@ class Student:
                     res[attr] = getattr(self, attr)
             return res
         # if return self.__dict__ directly, the caller receives a reference of internal dict.
-        # if user modifies this dict, they will actually change the attributes of this dict.
-        # By using .copy() any change made to the returned dict will not affect the original attributes.
+        # if user modifies this dict, they will actually change the real attributes of the object.
+        # By using .copy() any changes made to the returned dict will not affect the original attributes.
         return self.__dict__.copy()
 
 
 """
 hasattr(obj, name) checks if the obj has an attribute named "name"
 getattr(obj, name) gets the value of the attribute named "name"
-res["first_name"] = "Jack"
+res[key] = value
 """
