@@ -24,14 +24,14 @@ class Student:
 
     def reload_from_json(self, json):
         """
-        Replace all attributes of the Student instance using key-value pairs 
-        from the provided dictionary.
-        For each key in the dictionary, the corresponding attribute of the
-        instance will be set to its value.
+        Updates or sets the instance's attributes using the key-value
+        pairs from the provided dictionary.
 
-        Args: 
+        Args:
             json(dict): whose key-value pairs will be assigned as attributes
             to the instance.
         """
+        # loop through key-value pairs in json dict
         for key, value in json.items():
+            #
             setattr(self, key, value)

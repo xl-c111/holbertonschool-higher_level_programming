@@ -16,15 +16,9 @@ class Student:
 
     def to_json(self, attrs=None):
         """
-        Returns a dictionary containing attributes of the Student instance for
-        JSON serialization.
-
-        If 'attrs' is provided and is a list of strings, the returned
-        dictionary will only include those attributes whose names are listed in
-        'attrs' (and that actually exist on the object).
-
-        If 'attrs' is not provided or is not a list of strings, all attributes
-        of the Student instance will be included in the returned dictionary.
+        Returns a dictionary of instance attributes. If attrs is provided and
+        is a list of strings, only those attributes are included. 
+        Otherwise, all are included.
 
         Args:
             attrs(list): List of attribute names to include.
