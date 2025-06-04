@@ -33,7 +33,6 @@ class Student:
         """
         # loop through key-value pairs in json dict
         for key, value in json.items():
-            #
             setattr(self, key, value)
 
 
