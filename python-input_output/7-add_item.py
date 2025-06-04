@@ -39,5 +39,5 @@ result: [1, 2, 3, [4, 5]]
 """
 sys.argv is a list that contains all the command-line arguments passed to the script.
 the first argument sys.argv[0] is always the name of the script.
-sys.argv[1:] skips the script name and gets only user's inputs. 
+sys.argv[1:] skips the script name and gets only user's input.
 """
