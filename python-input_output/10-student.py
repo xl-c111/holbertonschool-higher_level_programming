@@ -28,11 +28,9 @@ class Student:
         if isinstance(attrs, list) and all(isinstance(attr, str) for
                                            attr in attrs):
             res = {}
-            # loop through each attribute name in attrs
             for attr in attrs:
-                # if self has this attribute. hasattr(obj, name)
                 if hasattr(self, attr):
-                    # get the value and add it to res
+                    # res[key] = value
                     res[attr] = getattr(self, attr)
             return res
         # if return self.__dict__ directly, the caller receives a reference of internal dict.
@@ -45,4 +43,21 @@ class Student:
 hasattr(obj, name) checks if the obj has an attribute named "name"
 getattr(obj, name) gets the value of the attribute named "name"
 res[key] = value
+"""
+
+# {attr: getattr(self, attr) for attr in attrs if hasattr(self, attr)}
+"""
+result = {}
+for attr in attrs:
+    if hasattr(self, attr):
+        result[attr] = getattr(self. attr)
+return result
+"""
+
+# WIORFLOW
+"""
+creates a dict
+loops over all attr in attrs
+for each attr, checks if the instance has an attribute with that name using if hasattr(self, attr)
+if self has the attribute, getattr(self, attr) gets its value
 """
