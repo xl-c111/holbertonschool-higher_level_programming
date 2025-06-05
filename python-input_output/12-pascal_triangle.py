@@ -31,3 +31,38 @@ def pascal_triangle(n):
 1, pad the previous row with 0 both at the beginning and end
 2, for each position of new row, sum up each pair of adjecent elements in the padded previous row.
 """
+
+
+# Another Solution
+def pascal_triangle(n):
+    if n <= 0:
+        return []
+
+    # initialize a main list triangle to store all rows
+    triangle = []
+
+    # loop through 0 to n-1 to build each row
+    for i in range(n):
+
+        # each rtow starts with 1
+        new_row = [1]
+
+        # j is used to loop through the middle position, its value = sum of two elemnts above it
+        for j in range(1, i):
+            new_row.append(triangle[i - 1][j - 1] + triangle[i - 1][j])
+
+        # except the first row, each row ends with 1
+        if i > 0:
+            new_row.append(1)
+        triangle.append(new_row)
+    return triangle
+
+
+# workflow
+"""
+1, i is used to loop through each row 
+2, each row  starts with 1, new_row = [1]
+3, j is used to loop through the middle position (except beginning and end position) 
+4, each element in the middle position of row == triangle[i -1][j - 1] + triangle[i - 1][j]
+5, if i > 0 (skips the first row), each row ends with 1
+"""
