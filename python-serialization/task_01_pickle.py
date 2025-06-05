@@ -24,5 +24,12 @@ class CustomObject:
 
     @classmethod
     def deserialize(cls, filename):
-        with open(filename, "rb") as f:
-            return pickle.load(f)
+        try:
+            with open(filename, "rb") as f:
+                return pickle.load(f)
+
+        # when deserialize from an empty, missing or corrupted file, python
+        # will raise exceptions to avoid crushing
+        except (EOFError, pickle.UnpicklingError, FileNotFoundError) as e:
+            print(f"Failed to deserialize from {filename}: {e}")
+            return None
