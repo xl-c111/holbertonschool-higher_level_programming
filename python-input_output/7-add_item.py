@@ -2,6 +2,7 @@
 """This script adds all command-line arguments to a list and saves them in a
 JSON file. If the file exists, previous data will be loaded and extended with
 the new arguments; otherwise, a new file will be created."""
+
 import sys
 
 save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
