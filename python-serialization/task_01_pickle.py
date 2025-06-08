@@ -29,7 +29,7 @@ class CustomObject:
                 return pickle.load(f)
 
         # when deserialize from an empty, missing or corrupted file, python
-        # will raise exceptions to avoid crushing
+        # will raise exceptions to avoid crashing
         except (EOFError, pickle.UnpicklingError, FileNotFoundError) as e:
             print(f"Failed to deserialize from {filename}: {e}")
             return None
