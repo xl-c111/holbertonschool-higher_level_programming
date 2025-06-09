@@ -27,18 +27,16 @@ def fetch_and_save_posts():
     if response.status_code == 200:
 
         response_dict = response.json()
-        id_dict = []
-        title_dict = []
-        body_dict = []
+        new_dict = []
 
         for post in response_dict:
-            id_dict.append({"id": post["id"]})
-            title_dict.append({"title": post["title"]})
-            body_dict.append({"body": post["body"]})
-
-            new_posts = [id_dict, title_dict, body_dict]
+            new_dict.append({
+                "id": post["id"],
+                "title": post["title"],
+                "body": post["body"]
+            })
 
     with open("posts.csv", "w", newline="", encoding="utf-8") as f:
         csv_writer = csv.DictWriter(f, fieldnames=["id", "title", "body"])
         csv_writer.writeheader()
-        csv_writer.writerows(new_posts)
+        csv_writer.writerows(new_dict)
