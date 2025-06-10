@@ -22,7 +22,7 @@ class Handler(BaseHTTPRequestHandler):
         elif self.path == "/data":
             json_response = json.dumps(python_dict)
             self.send_response(200)
-            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Content-Type", "application/json")
             self.end_headers()
 
             self.wfile.write(json_response.encode("utf-8"))
@@ -36,14 +36,14 @@ class Handler(BaseHTTPRequestHandler):
         elif self.path == "/info":
             json_response = json.dumps(info_dict)
             self.send_response(200)
-            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Content-Type", "application/json")
             self.end_headers()
             self.wfile.write(json_response.encode("utf-8"))
 
         else:
-            error = 'json {"error": "404 Not Found"}'
+            error = "Endpoint not found"
             self.send_response(404)
-            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Content-Type", "text/plain")
             self.end_headers()
             self.wfile.write(error.encode("utf-8"))
 
