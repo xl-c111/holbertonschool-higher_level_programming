@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """This module demonstrates how to fetch post data from a RESTful API using
 the `requests` library and save the data into a CSV file using Python's `csv`
 module"""
