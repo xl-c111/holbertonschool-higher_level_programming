@@ -16,6 +16,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token, create_refresh_token, get_jwt_identity, jwt_required, get_jwt, JWTManager
 
 
+# Enable Flask to recognize users and authentication methods
 app = Flask(__name__)
 auth = HTTPBasicAuth()
 app.config["JWT_SECRET_KEY"] = "super-secret"
@@ -27,6 +28,7 @@ users = {
 }
 
 
+# Register password verification method
 @auth.verify_password
 def verify_password(username, password):
     user_info = users.get(username)
@@ -35,12 +37,14 @@ def verify_password(username, password):
     return None
 
 
+# Login type / Protected endpoint: Basic Auth
 @app.route("/basic-protected", methods=["GET"])
 @auth.login_required
 def basic_protected():
     return "Basic Auth: Access Granted"
 
 
+# Login type: JWT
 @app.route("/login", methods=["POST"])
 def login():
     data = request.get_json()
@@ -58,12 +62,14 @@ def login():
     return jsonify({'error': 'Invalid credentials'}), 401
 
 
+# Protected endpoint: JWT
 @app.route("/jwt-protected", methods=["GET"])
 @jwt_required()
 def jwt_protected():
     return "JWT Auth: Access Granted"
 
 
+# Admin-Only endpoint
 @app.route("/admin-only", methods=["GET"])
 @jwt_required()
 def admin_only():
@@ -106,13 +112,13 @@ if __name__ == "__main__":
 
 # Workflow
 """
-1, Initialize Flask obj app and authentication tools
+1, Enable Flask to recognize users and authentication methods
    - app = Flask(__name__): create a Flask app obj, __name__ tells Flask where to look for resources
    - auth = HTTPBasicAuth(): create an obj of HTTPBasicAuth class to manage authentication
    - app.config["JWT_SECRET_KEY"] = "super-secret": set a secret key for JWT signing and verification
    - jwt = JWTManager(app): create a JWTManager obj to enable JWT support in the Flask app
 
-2, set up a method to check the user's password
+2, Set up password verification method
    - @auth.verify_password: register a function to check username and password
    - user_info = users.get(username): look up the user info in the users dict using username as key, 
                                       it will return a user info dict
