@@ -112,7 +112,7 @@ if __name__ == "__main__":
    - app.config["JWT_SECRET_KEY"] = "super-secret": set a secret key for JWT signing and verification
    - jwt = JWTManager(app): create a JWTManager obj to enable JWT support in the Flask app
 
-2, Register Basic Auth password verification 
+2, set up a method to check the user's password
    - @auth.verify_password: register a function to check username and password
    - user_info = users.get(username): look up the user info in the users dict using username as key, 
                                       it will return a user info dict
@@ -120,12 +120,14 @@ if __name__ == "__main__":
    - check_password_hash(user_info["password"], password): to check if the hashed password stored in 
                             user_info["password"] matches the plain-text password provided by client
 
-3, protect endpoint with Basic Auth
+3, Support two types of login - Basic Authentication (providing username and password each time)
+   Design two separate protected endpoints - Protect endpoint with Basic Authentication
    - @app.route("/basic-protected", methods=["GET"]): define a route /basic-protected using GET
    - @auth.login_required: decorator enforces Basic Auth protection(only clients who provide a valid
                            username and password can access this endpoint)
 
-4, implement JWT login endpoint
+4, Support two types of login - JWT authentication(you log in once, and the server issues you a "token", 
+                                by presenting this token, without needing to enter your username and password every time)
    - @app.route("/login", methods=["POST"]): define a route /login using POST
    - data = request.get_json(): get login information by retrieving JSON data from request
    - username = data.get("username"): using get() method to retrieve the value of the key "username"
@@ -139,15 +141,15 @@ if __name__ == "__main__":
    - return jsonify({"access_token": access_token}): package token into a dict, using jsonify convert
                     it to JSON and then return it as HTTP reponse back to client
 
-5, Protect endpoint with JWT  
+5, Design two separate protected endpoints - Protect endpoint with JWT
    - @app.route("/jwt-protected"): define a route using GET 
    - @jwt_required(): decorator enforces JWT protection(only requests with a valid JWT access token can access)
 
-6, Implement admin-only JWT-protected endpoint  
+6, Design an endpoint specifically for admin
    - claims = get_jwt(): when a request with a valid JWT token coming in, Flask-JWT-Extended decodes the
                         token and makes its payload(claims) available via get_jwt(), claims dict contains
                         all the fields in the token.
    - if claims.get("role") != "admin": retrieve the value associated with the key 'role' in the claims dict. 
 
-7, Register custom JWT error handlers  
+7, Unified authentication error handling
 """
