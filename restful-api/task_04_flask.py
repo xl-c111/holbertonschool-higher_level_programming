@@ -15,13 +15,12 @@ def home():
 
 @app.route("/data")
 def get_data():
-    usernames = list(users.keys())
-    return jsonify(usernames), 200
+    return jsonify(list(users.keys()))
 
 
 @app.route("/status")
 def get_status():
-    return "OK", 200
+    return "OK"
 
 
 @app.route("/users/<username>")
