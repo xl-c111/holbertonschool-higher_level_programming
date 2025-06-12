@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-from flask import Flask
-from flask import jsonify
-from flask import request
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 users = {
@@ -34,15 +32,21 @@ def get_username_obj(username):
         return jsonify({"error": "User not found"}), 404
 
 
+# specify only POST method is allowed
 @app.route("/add_user", methods=['POST'])
 def add_user():
+    # get JSON data sent with the POST request
     data = request.get_json()
+    # check if no data sent
     if not data:
         return jsonify({"error": "No JSON data provided"}), 400
 
+    # get username value from data dict
     username = data.get("username")
+    # check if username is missing or empty
     if not username:
         return jsonify({"error": "Username is required"}), 400
+    # add the user data to users dict using username as key
     users[username] = data
     return jsonify({"message": "User added", "user": data}), 201
 
