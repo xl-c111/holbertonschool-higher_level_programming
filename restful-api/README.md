@@ -46,27 +46,21 @@ name=Alice&email=alice@example.com
 
 ## HTTP Response Structure
 
-### 1. Status Line
+1. **Status Line**  
+   - Example: `HTTP/1.1 200 OK`  
+   - Contains: HTTP version, status code, status message
 
-- **Example**: `HTTP/1.1 200 OK`  
-- **Contains**: HTTP version, status code (e.g. `200`), and status message (e.g. `OK`)
+2. **Headers**  
+   - Example: `Content-Type: text/html`  
+   - Key-value pairs like content type, length, server...
 
-### 2. Headers
+3. **Blank Line**  
+   - A single blank line separates headers from the body
 
-- **Example**: `Content-Type: text/html`  
-- Key-value pairs with information about the response such as content type, length, server, etc.
+4. **Body (optional)**  
+   - The actual content sent back (HTML, JSON, image, etc.)
 
-### 3. Blank Line
-
-- A single blank line separates headers from the body.
-
-### 4. Body (Optional)
-
-- Contains the actual data returned by the server, such as HTML, JSON, an image, or other content.
-
----
-
-### Example HTTP Response
+**Example:**
 
 ```http
 HTTP/1.1 200 OK
@@ -78,10 +72,12 @@ Content-Length: 70
     <h1>Hello, Alice!</h1>
   </body>
 </html>
-| Code Range | Type          | Description                                  |
-| ---------- | ------------- | -------------------------------------------- |
-| 1xx        | Informational | Request received, continuing process         |
-| 2xx        | Success       | Request successfully processed               |
-| 3xx        | Redirection   | Further action needs to be taken             |
-| 4xx        | Client Error  | The request has an error or invalid syntax   |
-| 5xx        | Server Error  | The server failed to fulfill a valid request |
+## Status Code Categories
+
+| Code | Category        | Description                                   |
+|------|----------------|-----------------------------------------------|
+| 1xx  | Informational   | Request received, continuing process          |
+| 2xx  | Successful      | Request successfully processed                |
+| 3xx  | Redirection     | Further action needs to be taken              |
+| 4xx  | Client Errors   | The request has an error or cannot be fulfilled (e.g., page not found) |
+| 5xx  | Server Errors   | The server failed to complete a valid request |
