@@ -29,12 +29,14 @@ This document explains the structure of HTTP requests and responses, the differe
    - Contains data sent to server
 
 **Example:**
+```
 POST /submit-form HTTP/1.1
 Host: www.example.com
 Content-Type: application/x-www-form-urlencoded
 Content-Length: 27
 
 name=Alice&email=alice@example.com
+```
 
 ---
 
@@ -55,6 +57,7 @@ name=Alice&email=alice@example.com
    - The actual content sent back (HTML, JSON, image, etc.)
 
 **Example:**
+```
 HTTP/1.1 200 OK
 Content-Type: text/html; charset=UTF-8
 Content-Length: 70
@@ -64,6 +67,7 @@ Content-Length: 70
     <h1>Hello, Alice!</h1>
   </body>
 </html
+```
 
 ---
 
