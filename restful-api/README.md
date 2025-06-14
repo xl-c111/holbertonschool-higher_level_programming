@@ -36,10 +36,6 @@ Content-Length: 27
 
 name=Alice&email=alice@example.com
 
-markdown
-Copy
-Edit
-
 ---
 
 ## HTTP Response Structure
@@ -63,20 +59,21 @@ HTTP/1.1 200 OK
 Content-Type: text/html; charset=UTF-8
 Content-Length: 70
 
-<html> <body> <h1>Hello, Alice!</h1> </body> </html> ```
-Status Code Categories
-1xx: Informational
-Request received, continuing process
+<html>
+  <body>
+    <h1>Hello, Alice!</h1>
+  </body>
+</html
 
-2xx: Successful
-Request successfully processed
+---
 
-3xx: Redirection
-Further action needs to be taken
+## Status Code
+| Status Code | Category         | Meaning                                                    |
+|-------------|------------------|------------------------------------------------------------|
+| 1xx         | Informational    | Request received, continuing process                       |
+| 2xx         | Successful       | Request successfully processed                             |
+| 3xx         | Redirection      | Further action needs to be taken                           |
+| 4xx         | Client Errors    | The request has an error or cannot be fulfilled (e.g., page not found) |
+| 5xx         | Server Errors    | The server failed to complete a valid request              |
 
-4xx: Client Errors
-The request has an error or cannot be fulfilled (e.g., page not found)
-
-5xx: Server Errors
-The server failed to complete a valid request
 
