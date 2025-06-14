@@ -14,6 +14,7 @@ def fetch_and_print_posts():
         # convert JSON response to python obj, typeof(posts): list[dict]
         posts = response.json()
         for post in posts:
+          # print(post.get("title"))
             print(post["title"])
 
 
