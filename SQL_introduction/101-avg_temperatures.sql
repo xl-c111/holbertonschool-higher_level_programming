@@ -7,7 +7,7 @@ ORDER BY avg_temp DESC;
 
 """
 1, check the structure of the table(run the command line below in the terminal)
-echo "SHOW COLUMNS FROM temperatures;" | mysql -hlocalhost -uroot -p hbtn_0c_0 == USE 
+echo "SHOW COLUMNS FROM temperatures;" | mysql -hlocalhost -uroot -p hbtn_0c_0 
 
 2, SELECT city, AVG(value) as avg_temp
    - SELECT: tell MYSQL which column to return 

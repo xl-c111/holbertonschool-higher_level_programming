@@ -8,6 +8,8 @@ Limit 3;
 
 
 """
-WHERE month BETWEEN...AND...: only include the month column 7 and 8
+1, WHERE month BETWEEN...AND...: only include the month column 7 and 8
 == WHERE month >= 7 AND month <= 8
+
+2, Limit 3: only return the first 3 rows
 """
