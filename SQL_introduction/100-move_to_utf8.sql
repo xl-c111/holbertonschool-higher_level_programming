@@ -13,11 +13,11 @@ CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
    - Syntax: USE database name
 
 2, remove any column-level charset and collation, keep the column's type and length
-   - Syntax: ATLER table_name
+   - Syntax: ATLER TABLE table_name
              MODIFY column_name column_type;
 
 3, set the table's default charset and collation, apply it to relevant columns
-   - Syntax: ATLER table_name
+   - Syntax: ATLER TABLE table_name
              CONVERT TO CHARACTER SET ... COLLATE ...
 
 """
