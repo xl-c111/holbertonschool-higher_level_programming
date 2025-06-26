@@ -93,116 +93,137 @@ FLUSH PRIVILEGES;
 
 ---
 
-## 🔗 SQL JOINs Overview
+## 🔗 SQL JOINs with Set Theory Notation
 
-This section explains the 7 most commonly used types of SQL JOINs, with syntax, logic, and usage examples.
-
----
-
-### 1. INNER JOIN
-
-**Logic:** Returns only rows with matching values in both tables (intersection).
-
-```sql
-SELECT *
-FROM table1
-INNER JOIN table2
-ON table1.id = table2.id;
-```
-
-**Example:** Get employees who have a department.
+> This document maps SQL JOIN operations to set theory concepts like intersections (∩), unions (∪), and differences (−), with SQL syntax and interpretation.
 
 ---
 
-### 2. FULL OUTER JOIN
+### 1. `INNER JOIN` → A ∩ B
 
-**Logic:** Returns all rows from both tables. Unmatched fields are filled with `NULL`.
+**Set Meaning:**  
+Only elements common to both tables A and B.
 
+**SQL:**
 ```sql
 SELECT *
-FROM table1
-FULL OUTER JOIN table2
-ON table1.id = table2.id;
+FROM A
+INNER JOIN B
+ON A.key = B.key;
 ```
 
-**Example:** List all employees and departments, even if unmatched.
+**Result:**  
+Returns rows where keys exist in both A and B.
 
 ---
 
-### 3. FULL OUTER JOIN (Without Intersection)
+### 2. `LEFT JOIN` → A ∪ (A − B)
 
-**Logic:** Returns only the rows that don’t have a match in either table.
+**Set Meaning:**  
+All elements from A, and matching elements from B. Unmatched B values are NULL.
 
+**SQL:**
 ```sql
 SELECT *
-FROM table1
-FULL OUTER JOIN table2
-ON table1.id = table2.id
-WHERE table1.id IS NULL OR table2.id IS NULL;
+FROM A
+LEFT JOIN B
+ON A.key = B.key;
 ```
 
-**Example:** Find employees without departments and departments without employees.
+**Result:**  
+All rows from A, with matched B data if exists, otherwise NULL.
 
 ---
 
-### 4. LEFT JOIN
+### 3. `LEFT JOIN` with `WHERE B.key IS NULL` → A − B
 
-**Logic:** Returns all rows from the left table, and matched rows from the right. Unmatched right rows are `NULL`.
+**Set Meaning:**  
+Only elements in A that do not exist in B.
 
+**SQL:**
 ```sql
 SELECT *
-FROM table1
-LEFT JOIN table2
-ON table1.id = table2.id;
+FROM A
+LEFT JOIN B
+ON A.key = B.key
+WHERE B.key IS NULL;
 ```
 
-**Example:** List all employees including those with no department.
+**Result:**  
+Only rows in A that have no match in B.
 
 ---
 
-### 5. LEFT JOIN (Without Intersection)
+### 4. `RIGHT JOIN` → B ∪ (B − A)
 
-**Logic:** Returns only left table rows that don’t match any row in the right table.
+**Set Meaning:**  
+All elements from B, and matching elements from A. Unmatched A values are NULL.
 
+**SQL:**
 ```sql
 SELECT *
-FROM table1
-LEFT JOIN table2
-ON table1.id = table2.id
-WHERE table2.id IS NULL;
+FROM A
+RIGHT JOIN B
+ON A.key = B.key;
 ```
 
-**Example:** Find employees without departments.
+**Result:**  
+All rows from B, with matched A data if exists, otherwise NULL.
 
 ---
 
-### 6. RIGHT JOIN
+### 5. `RIGHT JOIN` with `WHERE A.key IS NULL` → B − A
 
-**Logic:** Returns all rows from the right table, and matched rows from the left. Unmatched left rows are `NULL`.
+**Set Meaning:**  
+Only elements in B that do not exist in A.
 
+**SQL:**
 ```sql
 SELECT *
-FROM table1
-RIGHT JOIN table2
-ON table1.id = table2.id;
+FROM A
+RIGHT JOIN B
+ON A.key = B.key
+WHERE A.key IS NULL;
 ```
 
-**Example:** List all departments including those with no employees.
+**Result:**  
+Only rows in B that have no match in A.
 
 ---
 
-### 7. RIGHT JOIN (Without Intersection)
+### 6. `FULL OUTER JOIN` → A ∪ B
 
-**Logic:** Returns only right table rows that don’t match any row in the left table.
+**Set Meaning:**  
+All elements from both A and B.
 
+**SQL:**
 ```sql
 SELECT *
-FROM table1
-RIGHT JOIN table2
-ON table1.id = table2.id
-WHERE table1.id IS NULL;
+FROM A
+FULL OUTER JOIN B
+ON A.key = B.key;
 ```
 
-**Example:** Find departments without employees.
+**Result:**  
+All rows from A and B, matched where possible, otherwise NULLs.
 
+---
 
+### 7. `FULL OUTER JOIN` with `WHERE A.key IS NULL OR B.key IS NULL` → (A − B) ∪ (B − A)
+
+**Set Meaning:**  
+Elements in A or B that have no match in the other.
+
+**SQL:**
+```sql
+SELECT *
+FROM A
+FULL OUTER JOIN B
+ON A.key = B.key
+WHERE A.key IS NULL OR B.key IS NULL;
+```
+
+**Result:**  
+Rows only from A or B with no matching pair.
+
+---
