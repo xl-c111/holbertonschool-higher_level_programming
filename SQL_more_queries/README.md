@@ -93,3 +93,116 @@ FLUSH PRIVILEGES;
 
 ---
 
+## 🔗 SQL JOINs Overview
+
+This section explains the 7 most commonly used types of SQL JOINs, with syntax, logic, and usage examples.
+
+---
+
+### 1. INNER JOIN
+
+**Logic:** Returns only rows with matching values in both tables (intersection).
+
+```sql
+SELECT *
+FROM table1
+INNER JOIN table2
+ON table1.id = table2.id;
+```
+
+**Example:** Get employees who have a department.
+
+---
+
+### 2. FULL OUTER JOIN
+
+**Logic:** Returns all rows from both tables. Unmatched fields are filled with `NULL`.
+
+```sql
+SELECT *
+FROM table1
+FULL OUTER JOIN table2
+ON table1.id = table2.id;
+```
+
+**Example:** List all employees and departments, even if unmatched.
+
+---
+
+### 3. FULL OUTER JOIN (Without Intersection)
+
+**Logic:** Returns only the rows that don’t have a match in either table.
+
+```sql
+SELECT *
+FROM table1
+FULL OUTER JOIN table2
+ON table1.id = table2.id
+WHERE table1.id IS NULL OR table2.id IS NULL;
+```
+
+**Example:** Find employees without departments and departments without employees.
+
+---
+
+### 4. LEFT JOIN
+
+**Logic:** Returns all rows from the left table, and matched rows from the right. Unmatched right rows are `NULL`.
+
+```sql
+SELECT *
+FROM table1
+LEFT JOIN table2
+ON table1.id = table2.id;
+```
+
+**Example:** List all employees including those with no department.
+
+---
+
+### 5. LEFT JOIN (Without Intersection)
+
+**Logic:** Returns only left table rows that don’t match any row in the right table.
+
+```sql
+SELECT *
+FROM table1
+LEFT JOIN table2
+ON table1.id = table2.id
+WHERE table2.id IS NULL;
+```
+
+**Example:** Find employees without departments.
+
+---
+
+### 6. RIGHT JOIN
+
+**Logic:** Returns all rows from the right table, and matched rows from the left. Unmatched left rows are `NULL`.
+
+```sql
+SELECT *
+FROM table1
+RIGHT JOIN table2
+ON table1.id = table2.id;
+```
+
+**Example:** List all departments including those with no employees.
+
+---
+
+### 7. RIGHT JOIN (Without Intersection)
+
+**Logic:** Returns only right table rows that don’t match any row in the left table.
+
+```sql
+SELECT *
+FROM table1
+RIGHT JOIN table2
+ON table1.id = table2.id
+WHERE table1.id IS NULL;
+```
+
+**Example:** Find departments without employees.
+
+
