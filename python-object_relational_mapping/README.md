@@ -4,14 +4,14 @@ A concise guide to using **MySQLdb** and **SQLAlchemy ORM** in Python for intera
 
 ---
 
-## 📦 MySQLdb (Python MySQL Client)
+## 1 MySQLdb (Python MySQL Client)
 
-### ✅ Key Concepts
+### 1.1 Key Concepts
 
 - `MySQLdb` is a lightweight Python interface to MySQL.
 - Supports manual SQL query execution via cursors.
 
-### 🧪 Syntax Example
+### 1.2 Syntax Example
 
 ```python
 import MySQLdb
@@ -30,7 +30,7 @@ db.close()
 ```
 ---
 
-### 🧠 Problem-Solving Steps (MySQLdb)
+### 1.3 Problem-Solving Steps (MySQLdb)
 
 1. Connect to MySQL using `MySQLdb.connect()`
 2. Create a cursor with `cursor()`
@@ -40,16 +40,16 @@ db.close()
 
 ---
 
-## 🧰 SQLAlchemy ORM
+## 2 SQLAlchemy ORM
 
-### ✅ Key Concepts
+### 2.1 Key Concepts
 
 - **Object Relational Mapping (ORM):** Maps Python classes to SQL tables
 - Enables clean, maintainable, and object-oriented interactions with relational databases
 
 ---
 
-### 🔧 Common SQLAlchemy Syntax
+### 2.2 Common SQLAlchemy Syntax
 
 | SQLAlchemy Syntax                                   | Equivalent SQL                      | Description               |
 |-----------------------------------------------------|-------------------------------------|---------------------------|
@@ -67,7 +67,7 @@ db.close()
 
 ---
 
-### 🧠 Problem-Solving Strategy (SQLAlchemy)
+### 2.3 Problem-Solving Strategy (SQLAlchemy)
 
 1. Define ORM models with `__tablename__` and column attributes
 2. Create an engine using `create_engine()`
@@ -79,7 +79,7 @@ db.close()
 
 ---
 
-## 🔄 MySQLdb vs SQLAlchemy Comparison
+## 3 MySQLdb vs SQLAlchemy Comparison
 
 | Feature                         | MySQLdb                          | SQLAlchemy ORM                     |
 |----------------------------------|-----------------------------------|------------------------------------|
@@ -91,7 +91,7 @@ db.close()
 
 ---
 
-## 📂 Full SQLAlchemy Query Example
+## 4 Full SQLAlchemy Query Example
 
 ```python
 from model_state import State
@@ -116,9 +116,9 @@ def fetch_states(username, password, database):
 
 ---
 
-## 💡 Tips
+## 5 Tips
 
-- ✅ **Always call** `session.commit()` after using `add()`, `update()`, or `delete()` to persist changes in the database.
+- 5.1 **Always call** `session.commit()` after using `add()`, `update()`, or `delete()` to persist changes in the database.
   ```python
   # Create a new State object
   new_state = State(name="Nevada")
@@ -128,22 +128,22 @@ def fetch_states(username, password, database):
   session.commit()  # ← without this, the new state won't be saved!
   ```
   
-- 🔒 **Use parameterized queries** when working with raw SQL in `MySQLdb` to avoid SQL injection:
+- 5.2 **Use parameterized queries** when working with raw SQL in `MySQLdb` to avoid SQL injection:
   ```python
   cursor.execute("SELECT * FROM states WHERE name = %s", ('Texas',))
   ```
 
-- 🎯 **Use** `.first()` **when expecting a single result** to reduce unnecessary memory and avoid list iteration:
+- 5.3 **Use** `.first()` **when expecting a single result** to reduce unnecessary memory and avoid list iteration:
   ```python
   user = session.query(User).filter(User.email == 'abc@example.com').first()
   ```
 
-- 🧹 **Keep sessions short-lived** and always close them after use to free up resources:
+- 5.4 **Keep sessions short-lived** and always close them after use to free up resources:
   ```python
   session.close()
   ```
 
-- 🧪 **Use** `pool_pre_ping=True` **in `create_engine()`** to avoid broken connections when the DB has timed out:
+- 5.5 **Use** `pool_pre_ping=True` **in `create_engine()`** to avoid broken connections when the DB has timed out:
   ```python
   engine = create_engine(..., pool_pre_ping=True)
   ```
