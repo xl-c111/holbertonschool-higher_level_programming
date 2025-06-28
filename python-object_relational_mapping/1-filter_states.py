@@ -54,7 +54,8 @@ if __name__ == "__main__":
 
 
 """
-1, BINARY: force comparison to be case-sensitive by treating name as a binary string
+1, BINARY: force comparison to be case-sensitive by treating name as a binary
+           string
 
 WHERE name LIKE 'N%': select all names starting with n or N
 WHERE BINARY name LIKE 'N%': select only names starting with uppercase 'N'
