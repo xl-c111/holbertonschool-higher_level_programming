@@ -1,4 +1,4 @@
-# 🐍 MySQLdb & SQLAlchemy - Python Database Summary
+# 🐍 Python - Object-relational mapping
 
 A concise guide to using **MySQLdb** and **SQLAlchemy ORM** in Python for interacting with MySQL databases. Covers essential syntax, key concepts, and problem-solving strategies.
 
