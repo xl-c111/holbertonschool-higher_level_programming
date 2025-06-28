@@ -12,7 +12,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 
-def fetch_first_state(username, password, database):
+def get_state_with_a(username, password, database):
     """
     Connects to the specified MySQL database and fetches all State objects
     that contain the letter 'a'
@@ -42,4 +42,4 @@ if __name__ == "__main__":
     password = sys.argv[2]
     database = sys.argv[3]
 
-    fetch_first_state(username, password, database)
+    get_state_with_a(username, password, database)
