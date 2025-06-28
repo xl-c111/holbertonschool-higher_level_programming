@@ -4,7 +4,7 @@ Script to display all values in the states table of hbtn_0e_0_usa
 where name matches the argument passed.
 
 Usage:
-    ./2-my_filter_states.py <username> <password> <database> 'state_name'
+    ./3-my_safe_filter_states.py <username> <password> <database> 'state_name'
 """
 import MySQLdb
 import sys
@@ -24,8 +24,9 @@ def get_states_by_name(username, password, database, state_name):
         )
         cursor = db.cursor()
         cursor.execute(
-            "SELECT * FROM states WHERE BINARY name = '{}' "
-            "ORDER BY states.id ASC".format(state_name))
+            "SELECT * FROM states "
+            "WHERE BINARY name = %s "
+            "ORDER BY states.id ASC ", (state_name,))
         for row in cursor.fetchall():
             print(row)
     except MySQLdb.MySQLError as e:
@@ -40,8 +41,8 @@ def get_states_by_name(username, password, database, state_name):
 if __name__ == "__main__":
     if len(sys.argv) != 5:
         print(
-            "Usage: ./2-my_filter_states.py <username> <password> <database> "
-            "'state_name'"
+            "Usage: .3-my_safe_filter_states.py <username> <password> """
+            "<database> 'state_name'"
         )
         sys.exit(1)
 
@@ -51,19 +52,3 @@ if __name__ == "__main__":
     state_name = sys.argv[4]
 
     get_states_by_name(username, password, database, state_name)
-
-
-"""
-Syntax: cursor.execute(query, parameters)
-        - parameters must be a sequence(tuple or list) or a dict
-        - when the SQL uses %s placeholders, the parameters must be a tuple or a list
-        e.g.,
-            query = "SELECT * FROM states WHERE name = %s AND id = %s"
-            params = ("Texas", 3)
-            cursor.execute(query, params)
-        - when the SQL uses %(name)s placeholders, the parameters must be a dict
-        e.g.,
-            query = "SELECT * FROM states WHERE name = %(state_name)s AND id = %(state_id)s"
-            params = {"state_name": "Texas", "state_id": 3}
-            cursor.execute(query, params)
-"""
