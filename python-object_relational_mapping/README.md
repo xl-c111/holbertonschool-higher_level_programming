@@ -1,4 +1,4 @@
-# 🐍 Python - Object-relational mapping
+# Python - Object-relational mapping
 
 A concise guide to using **MySQLdb** and **SQLAlchemy ORM** in Python for interacting with MySQL databases. Covers essential syntax, key concepts, and problem-solving strategies.
 
@@ -30,7 +30,7 @@ db.close()
 ```
 ---
 
-## 🧠 Problem-Solving Steps (MySQLdb)
+### 🧠 Problem-Solving Steps (MySQLdb)
 
 1. Connect to MySQL using `MySQLdb.connect()`
 2. Create a cursor with `cursor()`
@@ -67,7 +67,7 @@ db.close()
 
 ---
 
-## 🧠 Problem-Solving Strategy (SQLAlchemy)
+### 🧠 Problem-Solving Strategy (SQLAlchemy)
 
 1. Define ORM models with `__tablename__` and column attributes
 2. Create an engine using `create_engine()`
