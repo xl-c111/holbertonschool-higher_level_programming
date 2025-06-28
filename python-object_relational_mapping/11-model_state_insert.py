@@ -10,7 +10,6 @@ import sys
 from model_state import State, Base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy import text
 
 
 def add_a_state(username, password, database):
