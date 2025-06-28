@@ -26,6 +26,8 @@ def fetch_all_states(username, password, database):
     for state in states:
         print("{}: {}".format(state.id, state.name))
 
+    session.close()
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
