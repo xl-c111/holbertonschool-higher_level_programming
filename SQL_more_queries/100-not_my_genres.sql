@@ -14,7 +14,7 @@ ORDER BY tv_genres.name ASC;
 
 -- Workflow
 -- 1, Subquery: Using tv_show_genres and tv_shows to find all genre IDs linked to 'Dexter'
--- 2, In the gerne table, excludes all these IDs
+-- 2, In the genre table, excludes all these IDs
 --    Syntax: WHERE ...NOT IN()
 -- 3, Keep the remaining genres 
 -- 4, Sort the final result by genre name

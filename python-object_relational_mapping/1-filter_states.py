@@ -51,3 +51,12 @@ if __name__ == "__main__":
     database = sys.argv[3]
 
     fetch_states(username, password, database)
+
+
+"""
+1, BINARY: force comparison to be case-sensitive by treating name as a binary string
+
+WHERE name LIKE 'N%': select all names starting with n or N
+WHERE BINARY name LIKE 'N%': select only names starting with uppercase 'N'
+WHERE BINARY name LIKE 'n%': select only names starting with lowercase 'n'
+"""
