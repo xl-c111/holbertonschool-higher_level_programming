@@ -22,8 +22,11 @@ def fetch_all_states(username, password, database):
     Session = sessionmaker(bind=engine)
     session = Session()
 
+    # states is a list where each element is an instance of State class
     states = session.query(State).order_by(State.id.asc()).all()
+    # state is a single instance of the State class(an ORM-mapped object)
     for state in states:
+        # using state.id to access the attributes of the single instance
         print("{}: {}".format(state.id, state.name))
 
     session.close()
@@ -43,8 +46,8 @@ if __name__ == "__main__":
 
 
 """
-1, build database URL: dialect+driver://username:password@host:port/database
-   - mysql+mysqldb: the dialect(mysql) and DBAPI(mysqldb)
+1, build the database URL: dialect+driver://username:password@host:port/database
+   - mysql+mysqldb: the dialect(mysql) and DBAPI driver(mysqldb)
    - username, password: used as user credentials
    - host:port: hostname and port
    - database: the name of database

@@ -17,3 +17,18 @@ class City(Base):
     state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
 
     state = relationship("State", back_populates="cities")
+
+
+"""
+state = relationship("State", back_populates="cities")
+
+- state =: Defines a Python attribute on the City class.
+           It represents the ORM-level link from a City object to its related State object.
+           It can be accessed like: city_obj.state.name
+
+- relationship("State", ...): "State" is the target class name.
+           It tells SQLAlchemy that each City is linked to a State via a foreign key.
+
+- back_populates="cities": Enables bidirectional access. The State class must define
+           the other side of the relationship: cities = relationship("City", back_populates="state")
+"""
