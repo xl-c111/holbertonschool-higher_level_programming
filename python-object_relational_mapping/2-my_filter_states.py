@@ -24,7 +24,7 @@ def get_states_by_name(username, password, database, state_name):
         )
         cursor = db.cursor()
         cursor.execute("SELECT * FROM states "
-                       "WHERE name = %s "
+                       "WHERE BINARY name = %s "
                        "ORDER BY states.id ASC", (state_name,))
         for row in cursor.fetchall():
             print(row)
