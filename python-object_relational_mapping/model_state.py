@@ -3,7 +3,7 @@
 using SQLAlchemy ORM."""
 
 
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import declarative_base, relationship
 from sqlalchemy import Column, Integer, String
 
 # Base class for SQLAlchemy models
@@ -16,3 +16,5 @@ class State(Base):
     id = Column(Integer, autoincrement=True, unique=True,
                 nullable=False, primary_key=True)
     name = Column(String(128), nullable=False)
+
+    cities = relationship("City", back_populates="state")
