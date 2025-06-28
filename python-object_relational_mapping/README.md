@@ -119,7 +119,15 @@ def fetch_states(username, password, database):
 ## 💡 Tips
 
 - ✅ **Always call** `session.commit()` after using `add()`, `update()`, or `delete()` to persist changes in the database.
-
+  ```python
+  # Create a new State object
+  new_state = State(name="Nevada")
+  # Add it to the session (not yet saved in DB)
+  session.add(new_state)
+  # Persist the change in the database
+  session.commit()  # ← without this, the new state won't be saved!
+  ```
+  
 - 🔒 **Use parameterized queries** when working with raw SQL in `MySQLdb` to avoid SQL injection:
   ```python
   cursor.execute("SELECT * FROM states WHERE name = %s", ('Texas',))
