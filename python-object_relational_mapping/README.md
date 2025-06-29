@@ -131,7 +131,7 @@ db.close()
 
 #### 2.3.1 Define ORM models with `__tablename__` and column attributes
 #### 2.3.2 Create an engine using `create_engine()`
----
+
    ##### URL Components Explained
    | Part                  | Description |
    |-----------------------|-------------|
@@ -140,13 +140,12 @@ db.close()
    | `host:port`           | Hostname and port number of the database server |
    | `database`            | Name of the database to connect to |
    
----
    ##### Example for MySQL:
    ```python
    from sqlalchemy import create_engine
    engine = create_engine("mysql+mysqldb://user:password@localhost:3306/my_database")
    ```
----
+
    ##### Notes
 
    ###### `mysql+mysqldb`:
@@ -159,7 +158,6 @@ db.close()
    - Automatically manages **connection pooling**.
    - Reuses **engine connections** under the hood, improving efficiency and scalability.
 
-----
 #### 2.3.3 Bind the session class via `sessionmaker()`
    ##### Binding the Session
    To interact with the database, you need to bind the session to the engine and create session instances:
@@ -169,15 +167,13 @@ db.close()
    Session = sessionmaker(bind=engine)  # Create a session factory class
    session = Session()                  # Create a concrete session instance
    ```
----
    ##### Explanation
 
    - `Session = sessionmaker(bind=engine)`  
    - Creates a **session factory class** that knows how to connect to the database using the given engine.
 
    - `session = Session()`  
-   - Instantiates a **concrete session object** (i.e., opens a working connection to the database).
----
+   - Instantiates a **concrete session object** (i.e., opens a working connection to the database)
 
   ##### Analogy
 
@@ -188,8 +184,6 @@ db.close()
   | `sessionmaker(bind=engine)`   | Setting up a session factory |
   | `Session`                     | The factory class            |
   | `Session()`                   | A new product (session instance) from the factory |
-
----
    
 #### 2.3.4 Use `.query() + .filter() + .order_by()` to construct queries
 #### 2.3.5 Use `.all()` or `.first()` to fetch results
