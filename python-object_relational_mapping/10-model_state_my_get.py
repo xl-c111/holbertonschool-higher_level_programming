@@ -12,7 +12,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 
-def get_state_ny_name(username, password, database, state_name):
+def get_state_by_name(username, password, database, state_name):
     """
     Connects to the specified MySQL database and searches for a State object
     whose name matches the given `state_name`.
@@ -44,4 +44,4 @@ if __name__ == "__main__":
     database = sys.argv[3]
     state_name = sys.argv[4]
 
-    get_state_ny_name(username, password, database, state_name)
+    get_state_by_name(username, password, database, state_name)
