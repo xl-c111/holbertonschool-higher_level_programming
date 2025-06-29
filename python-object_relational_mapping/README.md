@@ -129,10 +129,10 @@ db.close()
 
 ### 2.3 Problem-Solving Strategy (SQLAlchemy)
 
-- Define ORM models with `__tablename__` and column attributes
-#### 2. Create an engine using `create_engine()`
+#### 2.3.1 Define ORM models with `__tablename__` and column attributes
+#### 2.3.2 Create an engine using `create_engine()`
 ---
-   ##### 2.1 URL Components Explained
+   ##### URL Components Explained
    | Part                  | Description |
    |-----------------------|-------------|
    | `dialect+driver`      | Database dialect and DBAPI driver (e.g., `mysql+mysqldb`) |
@@ -141,13 +141,13 @@ db.close()
    | `database`            | Name of the database to connect to |
    
 ---
-   ##### 2.2 Example for MySQL:
+   ##### Example for MySQL:
    ```python
    from sqlalchemy import create_engine
    engine = create_engine("mysql+mysqldb://user:password@localhost:3306/my_database")
    ```
 ---
-   ##### 2.3 Notes
+   ##### Notes
 
    ###### `mysql+mysqldb`:
 
@@ -160,8 +160,8 @@ db.close()
    - Reuses **engine connections** under the hood, improving efficiency and scalability.
 
 ----
-#### 3. Bind the session class via `sessionmaker()`
-   ##### 3.1 Binding the Session
+#### 2.3.3 Bind the session class via `sessionmaker()`
+   ##### Binding the Session
    To interact with the database, you need to bind the session to the engine and create session instances:
 
    ```python
@@ -170,7 +170,7 @@ db.close()
    session = Session()                  # Create a concrete session instance
    ```
 ---
-   ##### 3.2 Explanation
+   ##### Explanation
 
    - `Session = sessionmaker(bind=engine)`  
    - Creates a **session factory class** that knows how to connect to the database using the given engine.
@@ -179,7 +179,7 @@ db.close()
    - Instantiates a **concrete session object** (i.e., opens a working connection to the database).
 ---
 
-  ##### 3.3 Analogy
+  ##### Analogy
 
   Think of it like a factory pattern:
 
@@ -191,10 +191,10 @@ db.close()
 
 ---
    
-#### 4. Use `.query() + .filter() + .order_by()` to construct queries
-#### 5. Use `.all()` or `.first()` to fetch results
-#### 6. Insert/update using `add()` / `update()` and call `commit()`
-#### 7. Always call `close()` to end the session
+#### 2.3.4 Use `.query() + .filter() + .order_by()` to construct queries
+#### 2.3.5 Use `.all()` or `.first()` to fetch results
+#### 2.3.6 Insert/update using `add()` / `update()` and call `commit()`
+#### 2.3.7 Always call `close()` to end the session
 
 ---
 
