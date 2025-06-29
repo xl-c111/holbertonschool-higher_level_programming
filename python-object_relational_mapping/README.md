@@ -234,8 +234,76 @@ query.filter(User.name.like('A%'))
 query.filter(User.name.ilike('a%'))
 ```
 ---
+## 4 One-to-Many vs. Many-to-One in SQLAlchemy
 
-## 4 MySQLdb vs SQLAlchemy Comparison
+Understanding how to model **relationships between tables** is essential when using SQLAlchemy ORM. The most common pattern is a **one-to-many** and its reverse, **many-to-one**.
+
+---
+### 4.1 Concepts
+
+| Relationship Type | Description | Example |
+|-------------------|-------------|---------|
+| One-to-Many       | One record in table A is related to **many** records in table B | One State has many Cities |
+| Many-to-One       | Many records in table B are related to **one** record in table A | Each City belongs to one State |
+
+
+### 4.2 Logical View
+```
+One-to-Many (State → Cities):
+┌────────────┐ ┌────────────┐
+│ State      │ │ City       │
+│ id = 1 │◀───▶│ state_id=1 │
+│ name="CA"  │ │ name="LA"  │
+└────────────┘ └────────────┘
+
+City.state is Many-to-One
+State.cities is One-to-Many
+```
+
+### 4.3 SQLAlchemy Syntax
+
+#### ✅ One-to-Many: in the `State` class
+
+```python
+class State(Base):
+    __tablename__ = 'states'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(128))
+    
+    # One-to-Many: A state has many cities
+    cities = relationship("City", back_populates="state")
+```
+#### ✅ One-to-Many: in the `State` class
+```python
+class City(Base):
+    __tablename__ = 'cities'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(128))
+    state_id = Column(Integer, ForeignKey('states.id'))
+    
+    # Many-to-One: Each city belongs to one state
+    state = relationship("State", back_populates="cities")
+```
+### 4.4 Comparison Table: One-to-Many vs. Many-to-One
+
+| Feature              | One-to-Many (`State → cities`) | Many-to-One (`City → state`)        |
+|----------------------|---------------------------------|--------------------------------------|
+| Defined in class     | Parent (`State`)                | Child (`City`)                       |
+| Relationship type    | `relationship("Child")`         | `relationship("Parent")`             |
+| Foreign key needed   | ❌ No                            | ✅ Yes (`ForeignKey`)                |
+| Access direction     | `state.cities` → list           | `city.state` → single object         |
+| `back_populates`     | `"state"`                       | `"cities"`                           |
+
+### 4.5 Summary
+
+- **One-to-Many** allows a parent to access all related children via a **list**.
+  - Example: `state.cities`
+- **Many-to-One** allows a child to access its parent via a **single object**.
+  - Example: `city.state`
+- Both sides should be linked using `back_populates` for clean and consistent **bidirectional access**.
+---
+
+## 5 MySQLdb vs SQLAlchemy Comparison
 
 | Feature                         | MySQLdb                          | SQLAlchemy ORM                     |
 |----------------------------------|-----------------------------------|------------------------------------|
@@ -247,7 +315,7 @@ query.filter(User.name.ilike('a%'))
 
 ---
 
-## 5 Full SQLAlchemy Query Example
+## 6 Full SQLAlchemy Query Example
 
 ```python
 from model_state import State
@@ -272,7 +340,7 @@ def fetch_states(username, password, database):
 
 ---
 
-## 6 Tips
+## 7 Tips
 
 - **Always call** `session.commit()` after using `add()`, `update()`, or `delete()` to persist changes in the database.
   ```python
