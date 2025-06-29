@@ -40,3 +40,42 @@ if __name__ == "__main__":
     database = sys.argv[3]
 
     fetch_city_by_state(username, password, database)
+
+
+# Step-by-Step Execution of city.state.name
+"""
+1, load a City obj from the database, e.g., city = session.query(City).filter_by(name="Austin").first()
+   now the python obj will look like: <City id=1, name='Austin', state_id=5> (at this point, city.state not loaded yet)
+
+2, access city.state
+   city.state: is a State obj, established via the relationship('State') ORM mapping
+
+   what happens internally:
+   - SQLAlchemy sees the City obj has a relationship("State")
+   - it looks at city.state_id (which is 5) 
+   - it will automatically issues this SQL query behind scenes: SELECT * FROM states WHERE id = 5;
+   - it returns a State obj, e.g., <State id=5, name='Texas'>
+   - SQLAlchemy caches this result as city.state
+
+city.state: is a State obj, established via the relationship('State') ORM mapping
+
+3, access city.state.name: simply access the .name attribute of the cached State obj
+   city.state.name: state name as a string, access the name field of the associated State instance
+
+
+"""
+# Visual Flow
+"""
+1. city.state_id == 5
+       │
+       ▼
+2. SQLAlchemy runs:
+   SELECT * FROM states WHERE id = 5
+       │
+       ▼
+3. Loads State(id=5, name="Texas")
+       │
+       ▼
+4. city.state.name → "Texas"
+
+"""

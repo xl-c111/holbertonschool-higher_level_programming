@@ -24,12 +24,18 @@ def add_a_state(username, password, database):
     Session = sessionmaker(bind=engine)
     session = Session()
 
+    # this queries the states table for the first row where name is 'Louisiana'
+    # .first() returns a single State obj if found
     existing = session.query(State).filter(State.name == "Louisiana").first()
     if existing:
         print("{}".format(existing.id))
     else:
+        # create a new State obj, assign the string 'Louisiana' to its name attribute
+        # equals to State.name = 'Louisiana'
         new_state = State(name="Louisiana")
+        # add this new State obj to the session, staging it for insertion into database
         session.add(new_state)
+        # commit all pending changes in the session. The new State obj is saved in the database, id will be generated automatically
         session.commit()
         print("{}".format(new_state.id))
 
@@ -47,3 +53,11 @@ if __name__ == "__main__":
     database = sys.argv[3]
 
     add_a_state(username, password, database)
+
+
+"""
+State(name = 'Louisiana') means:
+- State.__init__() is called
+- internally: self.name = 'Louisiana' is set
+- equals to new_state.name = "Louisiana"
+"""

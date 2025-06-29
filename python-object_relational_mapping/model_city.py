@@ -15,7 +15,7 @@ class City(Base):
                 nullable=False, primary_key=True)
     name = Column(String(128), nullable=False)
     state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
-
+    # define a class attribute that represents the ORM level link from a City obj to its related State obj
     state = relationship("State", back_populates="cities")
 
 
