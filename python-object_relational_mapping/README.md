@@ -132,7 +132,7 @@ db.close()
 #### 2.3.1 Define ORM models with `__tablename__` and column attributes
 #### 2.3.2 Create an engine using `create_engine()`
 
-   ##### URL Components Explained
+   ##### 2.3.2.1 URL Components Explained
    | Part                  | Description |
    |-----------------------|-------------|
    | `dialect+driver`      | Database dialect and DBAPI driver (e.g., `mysql+mysqldb`) |
@@ -140,26 +140,26 @@ db.close()
    | `host:port`           | Hostname and port number of the database server |
    | `database`            | Name of the database to connect to |
    
-   ##### Example for MySQL:
+   ##### 2.3.2.2 Example for MySQL:
    ```python
    from sqlalchemy import create_engine
    engine = create_engine("mysql+mysqldb://user:password@localhost:3306/my_database")
    ```
 
-   ##### Notes
+   ##### 2.3.2.3 Notes
 
    ###### `mysql+mysqldb`:
 
    - **`mysql`** is the *dialect* (i.e., the type of SQL being used).
    - **`mysqldb`** is the *DBAPI driver* that actually handles communication with the MySQL database.
 
-   ###### SQLAlchemy:
+   ###### `SQLAlchemy`:
 
    - Automatically manages **connection pooling**.
    - Reuses **engine connections** under the hood, improving efficiency and scalability.
 
 #### 2.3.3 Bind the session class via `sessionmaker()`
-   ##### Binding the Session
+   ##### 2.3.3.1 Binding the Session
    To interact with the database, you need to bind the session to the engine and create session instances:
 
    ```python
@@ -167,7 +167,7 @@ db.close()
    Session = sessionmaker(bind=engine)  # Create a session factory class
    session = Session()                  # Create a concrete session instance
    ```
-   ##### Explanation
+   ##### 2.3.3.2 Explanation
 
    - `Session = sessionmaker(bind=engine)`  
    - Creates a **session factory class** that knows how to connect to the database using the given engine.
@@ -175,7 +175,7 @@ db.close()
    - `session = Session()`  
    - Instantiates a **concrete session object** (i.e., opens a working connection to the database)
 
-  ##### Analogy
+  ##### 2.3.3.3 Analogy
 
   Think of it like a factory pattern:
 
