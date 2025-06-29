@@ -128,10 +128,9 @@ db.close()
 ---
 
 ### 2.3 Problem-Solving Strategy (SQLAlchemy)
-
-#### 2.3.1 Define ORM models with `__tablename__` and column attributes
-#### 2.3.2 Create an engine using `create_engine()`
-
+- 2.3.1 Define ORM models with `__tablename__` and column attributes
+- 2.3.2 Create an engine using `create_engine()`
+  
    ##### 🧩 URL Components Explained
    | Part                  | Description |
    |-----------------------|-------------|
@@ -147,7 +146,7 @@ db.close()
    ```
 
    ##### 🧩 Notes
-
+  
    ###### `mysql+mysqldb`:
 
    - **`mysql`** is the *dialect* (i.e., the type of SQL being used).
@@ -158,7 +157,7 @@ db.close()
    - Automatically manages **connection pooling**.
    - Reuses **engine connections** under the hood, improving efficiency and scalability.
 
-#### 2.3.3 Bind the session class via `sessionmaker()`
+- 2.3.3 Bind the session class via `sessionmaker()`
    ##### 🧩 Binding the Session
    To interact with the database, you need to bind the session to the engine and create session instances:
 
@@ -185,10 +184,10 @@ db.close()
   | `Session`                     | The factory class            |
   | `Session()`                   | A new product (session instance) from the factory |
    
-#### 2.3.4 Use `.query() + .filter() + .order_by()` to construct queries
-#### 2.3.5 Use `.all()` or `.first()` to fetch results
-#### 2.3.6 Insert/update using `add()` / `update()` and call `commit()`
-#### 2.3.7 Always call `close()` to end the session
+- 2.3.4 Use `.query() + .filter() + .order_by()` to construct queries
+- 2.3.5 Use `.all()` or `.first()` to fetch results
+- 2.3.6 Insert/update using `add()` / `update()` and call `commit()`
+- 2.3.7 Always call `close()` to end the session
 
 ---
 ## 3 Pattern Matching with `like()` in SQL and SQLAlchemy
