@@ -191,8 +191,42 @@ db.close()
 #### 2.3.7 Always call `close()` to end the session
 
 ---
+## 3 Pattern Matching with `like()` in SQL and SQLAlchemy
 
-## 3 MySQLdb vs SQLAlchemy Comparison
+In SQL and SQLAlchemy, the `LIKE` operator is used for pattern matching in text columns. The most common wildcards are:
+
+- `%` : Matches **any sequence of characters** (including none)
+- `_` : Matches **a single character**
+
+Below is a quick reference for how to use `like()` with patterns:
+
+| Pattern Expression     | Meaning in SQL Terms                  | SQLAlchemy Usage Example                     |
+|------------------------|---------------------------------------|----------------------------------------------|
+| `%a%`                  | Contains the letter `a`               | `column.like('%a%')`                         |
+| `a%`                   | Starts with `a`                       | `column.like('a%')`                          |
+| `%a`                   | Ends with `a`                         | `column.like('%a')`                          |
+| `_a%`                  | Second character is `a`               | `column.like('_a%')`                         |
+| `%abc%`                | Contains substring `abc`              | `column.like('%abc%')`                       |
+| `____`                 | Exactly four characters               | `column.like('____')`                        |
+| `%` (only percent)     | Matches any value (not NULL)          | `column.like('%')`                           |
+
+### Case Sensitivity
+
+- `like()` is **case-sensitive**.
+- Use `ilike()` in SQLAlchemy for **case-insensitive** matching (not supported by all databases).
+
+**Example:**
+
+```python
+# Case-sensitive search (matches 'Alice' but not 'alice')
+query.filter(User.name.like('A%'))
+
+# Case-insensitive search (matches both 'Alice' and 'alice')
+query.filter(User.name.ilike('a%'))
+```
+---
+
+## 4 MySQLdb vs SQLAlchemy Comparison
 
 | Feature                         | MySQLdb                          | SQLAlchemy ORM                     |
 |----------------------------------|-----------------------------------|------------------------------------|
@@ -204,7 +238,7 @@ db.close()
 
 ---
 
-## 4 Full SQLAlchemy Query Example
+## 5 Full SQLAlchemy Query Example
 
 ```python
 from model_state import State
@@ -229,9 +263,9 @@ def fetch_states(username, password, database):
 
 ---
 
-## 5 Tips
+## 6 Tips
 
-- 5.1 **Always call** `session.commit()` after using `add()`, `update()`, or `delete()` to persist changes in the database.
+- **Always call** `session.commit()` after using `add()`, `update()`, or `delete()` to persist changes in the database.
   ```python
   # Create a new State object
   new_state = State(name="Nevada")
@@ -241,7 +275,7 @@ def fetch_states(username, password, database):
   session.commit()  # ← without this, the new state won't be saved!
   ```
   
-- 5.2 **Use parameterized queries** when working with raw SQL in `MySQLdb` to avoid SQL injection. Even if there's only **one** parameter, you still need to pass it as a sequence (usually a tuple).
+- **Use parameterized queries** when working with raw SQL in `MySQLdb` to avoid SQL injection. Even if there's only **one** parameter, you still need to pass it as a sequence (usually a tuple).
 
   ### ✅ Correct
 
@@ -264,17 +298,17 @@ def fetch_states(username, password, database):
    | `(user_input,)`    | ✅ Tuple with 1 element |
 
 
-- 5.3 **Use** `.first()` **when expecting a single result** to reduce unnecessary memory and avoid list iteration:
+- **Use** `.first()` **when expecting a single result** to reduce unnecessary memory and avoid list iteration:
   ```python
   user = session.query(User).filter(User.email == 'abc@example.com').first()
   ```
 
-- 5.4 **Keep sessions short-lived** and always close them after use to free up resources:
+- **Keep sessions short-lived** and always close them after use to free up resources:
   ```python
   session.close()
   ```
 
-- 5.5 **Use** `pool_pre_ping=True` **in `create_engine()`** to avoid broken connections when the DB has timed out:
+- **Use** `pool_pre_ping=True` **in `create_engine()`** to avoid broken connections when the DB has timed out:
   ```python
   engine = create_engine(..., pool_pre_ping=True)
   ```
