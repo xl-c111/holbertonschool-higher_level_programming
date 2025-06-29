@@ -11,7 +11,7 @@ import sys
 
 def get_cities_by_state(username, password, database, state_name):
     """
-   Fetches and prints city names of a given state, ordered by city ID.
+    Fetches and prints city names of a given state, ordered by city ID.
     """
     try:
         db = MySQLdb.connect(
@@ -52,3 +52,18 @@ if __name__ == "__main__":
     state_name = sys.argv[4]
 
     get_cities_by_state(username, password, database, state_name)
+
+
+"""
+1, cities = [row[1] for row in cursor.fetchall()]
+   - cursor.fetchall() retrieves all rows returned by the last SQL query. it returns a list of tuple
+   - for loop iterates each row (which is a tuple)
+   - row[1] refers to the second column in each row(index 1), which is city's name 
+   - cities = [] collects all cities'name into a new list
+2, (", ".join(cities))
+   Syntax: "separator".join(list) ---> returns a single string made by joining all elements of the list using the given seperator
+   e.g.,  ", ".join(['New York', 'Los Angeles', 'Chicago'])
+   Output: 'New York, Los Angeles, Chicago'
+
+
+"""

@@ -55,16 +55,25 @@ if __name__ == "__main__":
 
 
 """
-Syntax: cursor.execute(query, parameters)
-        - parameters must be a sequence(tuple or list) or a dict
+1, parameterized queries to avoid SQL injection 
+   Syntax: cursor.execute(SQL query, parameters)
+
+        - parameters must be a sequence(tuple or list)
         - when the SQL uses %s placeholders, the parameters must be a tuple or a list
         e.g.,
             query = "SELECT * FROM states WHERE name = %s AND id = %s"
             params = ("Texas", 3)
             cursor.execute(query, params)
+
         - when the SQL uses %(name)s placeholders, the parameters must be a dict
         e.g.,
             query = "SELECT * FROM states WHERE name = %(state_name)s AND id = %(state_id)s"
             params = {"state_name": "Texas", "state_id": 3}
             cursor.execute(query, params)
+
+2, cursor.execute() expects the second parameter to be a sequence(a tuple or a list)
+                    that contains the value for the placeholder(%s)
+    e.g., cursor.execute("SELECT * FROM users WHERE username = %s", (user_input,))
+          (user_input) = ('John') is a string 
+          (user_input, ) = ('Jonh',) is a tuple with one element
 """
