@@ -131,7 +131,66 @@ db.close()
 
 1. Define ORM models with `__tablename__` and column attributes
 2. Create an engine using `create_engine()`
+---
+   #### 2.1 URL Components Explained
+   | Part                  | Description |
+   |-----------------------|-------------|
+   | `dialect+driver`      | Database dialect and DBAPI driver (e.g., `mysql+mysqldb`) |
+   | `username:password`   | Database user credentials |
+   | `host:port`           | Hostname and port number of the database server |
+   | `database`            | Name of the database to connect to |
+   
+---
+   #### 2.2 Example for MySQL:
+   ```python
+   from sqlalchemy import create_engine
+   engine = create_engine("mysql+mysqldb://user:password@localhost:3306/my_database")
+   ```
+---
+   #### 2.3 Notes
+
+   ##### `mysql+mysqldb`:
+
+   - **`mysql`** is the *dialect* (i.e., the type of SQL being used).
+   - **`mysqldb`** is the *DBAPI driver* that actually handles communication with the MySQL database.
+
+   ##### SQLAlchemy:
+
+   - Automatically manages **connection pooling**.
+   - Reuses **engine connections** under the hood, improving efficiency and scalability.
+
+----
 3. Bind the session class via `sessionmaker()`
+   #### 3.1 Binding the Session
+   To interact with the database, you need to bind the session to the engine and create session instances:
+
+   ```python
+   from sqlalchemy.orm import sessionmaker
+   Session = sessionmaker(bind=engine)  # Create a session factory class
+   session = Session()                  # Create a concrete session instance
+   ```
+---
+   #### 3.2 Explanation
+
+   - `Session = sessionmaker(bind=engine)`  
+   - Creates a **session factory class** that knows how to connect to the database using the given engine.
+
+   - `session = Session()`  
+   - Instantiates a **concrete session object** (i.e., opens a working connection to the database).
+---
+
+  #### 3.3 Analogy
+
+  Think of it like a factory pattern:
+
+  | Concept                        | Analogy                     |
+  |-------------------------------|-----------------------------|
+  | `sessionmaker(bind=engine)`   | Setting up a session factory |
+  | `Session`                     | The factory class            |
+  | `Session()`                   | A new product (session instance) from the factory |
+
+---
+   
 4. Use `.query() + .filter() + .order_by()` to construct queries
 5. Use `.all()` or `.first()` to fetch results
 6. Insert/update using `add()` / `update()` and call `commit()`
