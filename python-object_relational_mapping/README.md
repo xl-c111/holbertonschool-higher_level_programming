@@ -21,8 +21,57 @@ A concise guide to using **MySQLdb** and **SQLAlchemy ORM** in Python for intera
 | `cursor.fetchmany(n)` | Fetches the next `n` rows (as a list of tuples)    |
 | `cursor.close()`      | Closes the cursor                                   |
 
+---
+### 1.3 Safe SQL with Parameterized Queries in `MySQLdb`
 
-### 1.3 Syntax Example
+#### 1.3.1 Basic Syntax
+
+```python
+cursor.execute(SQL_query, parameters)
+```
+
+- `parameters` must be:
+  - a **tuple** or **list** when using `%s` placeholders.
+  - a **dictionary** when using `%(name)s` placeholders.
+---
+
+#### 1.3.2 Using `%s` Placeholders (Positional Parameters)
+
+Use a **tuple** or **list** to pass parameters.
+
+##### ✅ Example
+
+```python
+query = "SELECT * FROM states WHERE name = %s AND id = %s"
+params = ("Texas", 3)
+cursor.execute(query, params)
+```
+---
+#### 1.3.3 Using `%(name)s` Placeholders (Named Parameters)
+
+Use a **dictionary** to pass named parameters.
+
+##### ✅ Example
+
+```python
+query = "SELECT * FROM states WHERE name = %(state_name)s AND id = %(state_id)s"
+params = {
+    "state_name": "Texas",
+    "state_id": 3
+}
+cursor.execute(query, params)
+```
+---
+#### 1.3.4 Summary Table
+
+| SQL Placeholder Type | Required Parameter Type | Example                             |
+|----------------------|--------------------------|-------------------------------------|
+| `%s`                 | Tuple or List            | `("Texas", 3)`                      |
+| `%(name)s`           | Dictionary               | `{"state_name": "Texas"}`           |
+
+----
+
+### 1.4 Syntax Example
 
 ```python
 import MySQLdb
@@ -41,7 +90,7 @@ db.close()
 ```
 ---
 
-### 1.4 Problem-Solving Steps (MySQLdb)
+### 1.5 Problem-Solving Steps (MySQLdb)
 
 1. Connect to MySQL using `MySQLdb.connect()`
 2. Create a cursor with `cursor()`
@@ -139,10 +188,27 @@ def fetch_states(username, password, database):
   session.commit()  # ← without this, the new state won't be saved!
   ```
   
-- 5.2 **Use parameterized queries** when working with raw SQL in `MySQLdb` to avoid SQL injection:
+- 5.2 **Use parameterized queries** when working with raw SQL in `MySQLdb` to avoid SQL injection. Even if there's only **one** parameter, you still need to pass it as a sequence (usually a tuple).
+
+  ### ✅ Correct
+
   ```python
-  cursor.execute("SELECT * FROM states WHERE name = %s", ('Texas',))
-  ```
+   cursor.execute("SELECT * FROM users WHERE username = %s", (user_input,))
+   ```
+
+   ### ❌ Incorrect
+
+   ```python
+   cursor.execute("SELECT * FROM users WHERE username = %s", (user_input))  # This is just a string, not a       tuple
+   ```
+
+  ### ✅ Explanation
+
+| Expression         | Type           |
+|--------------------|----------------|
+| `(user_input)`     | String         |
+| `(user_input,)`    | ✅ Tuple with 1 element |
+
 
 - 5.3 **Use** `.first()` **when expecting a single result** to reduce unnecessary memory and avoid list iteration:
   ```python
