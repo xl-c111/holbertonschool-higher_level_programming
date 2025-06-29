@@ -260,7 +260,7 @@ class State(Base):
     # One-to-Many: A state has many cities
     cities = relationship("City", back_populates="state")
 ```
-#### ✅ One-to-Many: in the `City` class
+#### ✅ Many-to-One: in the `City` class
 ```python
 class City(Base):
     __tablename__ = 'cities'
