@@ -111,19 +111,29 @@ db.close()
 
 ### 2.2 Common SQLAlchemy Syntax
 
-| SQLAlchemy Syntax                                   | Equivalent SQL                      | Description               |
-|-----------------------------------------------------|-------------------------------------|---------------------------|
-| `session.query(Model)`                              | `SELECT * FROM table`               | Query all records         |
-| `.filter(Model.name == 'California')`               | `WHERE name = 'California'`         | Filter results            |
-| `.order_by(Model.id.asc())`                         | `ORDER BY id ASC`                   | Sort ascending            |
-| `.first()`                                          | `LIMIT 1`                           | Get first record          |
-| `.all()`                                            | *(returns all as list)*             | Get all records           |
-| `.add(obj)`                                         | `INSERT INTO ...`                   | Insert one record         |
-| `.add_all([obj1, obj2])`                            | `INSERT INTO ...` (multiple rows)   | Insert multiple records   |
-| `.update({field: value})`                           | `UPDATE ... SET ...`                | Update record(s)          |
-| `.delete(obj)`                                      | `DELETE FROM ...`                   | Delete a record           |
-| `.commit()`                                         | `COMMIT;`                           | Save changes              |
-| `.close()`                                          | *(no SQL equivalent)*               | Close the session         |
+
+| SQLAlchemy Method            | Type of Argument     | Purpose / Description                         | SQL Equivalent Syntax                        |
+|-----------------------------|----------------------|------------------------------------------------|----------------------------------------------|
+| `session.query(User)`       | Class / Column       | Start a query on a table or columns            | `SELECT * FROM users`                        |
+| `.filter(User.age > 30)`    | Query condition       | Add WHERE condition                            | `WHERE age > 30`                             |
+| `.filter_by(name="Alice")`  | Keyword condition     | Shortcut for equality-based filtering          | `WHERE name = 'Alice'`                       |
+| `.order_by(User.id.desc())` | Column or expression  | Add ORDER BY clause                            | `ORDER BY id DESC`                           |
+| `.first()` / `.all()`       | None                 | Execute the query and return result(s)         | `LIMIT 1` / return all rows                  |
+| `.get(1)`                   | Primary key value     | Retrieve one row by ID                         | `SELECT * FROM users WHERE id = 1`           |
+| `session.add(obj)`          | Object                | Add new object to session (staged insert)      | `INSERT INTO users (...) VALUES (...)`       |
+| `session.add_all([a, b])`   | List of objects       | Add multiple objects                           | Multiple `INSERT` statements                 |
+| `session.delete(obj)`       | Object                | Mark object for deletion                       | `DELETE FROM users WHERE id = ?`             |
+| `session.commit()`          | None                  | Commit all staged changes                      | Executes all `INSERT`, `DELETE`, `UPDATE`    |
+| `session.rollback()`        | None                  | Undo uncommitted changes                       | `ROLLBACK`                                   |
+| `session.merge(obj)`        | Object                | Merge a detached object into session           | `UPDATE` or `INSERT` depending on existence  |
+
+---
+
+#### ✅ Quick Notes
+
+- Methods like `query()`, `filter()`, and `order_by()` are **used to build SQL statements**.
+- Methods like `add()`, `delete()`, `commit()` operate on **actual Python objects** and control **database state**.
+- SQLAlchemy automatically converts ORM code into real SQL executed by the DB engine.
 
 ---
 
