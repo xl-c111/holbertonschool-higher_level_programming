@@ -43,6 +43,7 @@ if __name__ == "__main__":
 
 
 # Step-by-Step Execution of city.state.name
+
 """
 1, load a City obj from the database, e.g., city = session.query(City).filter_by(name="Austin").first()
    now the python obj will look like: <City id=1, name='Austin', state_id=5> (at this point, city.state not loaded yet)
@@ -57,13 +58,12 @@ if __name__ == "__main__":
    - it returns a State obj, e.g., <State id=5, name='Texas'>
    - SQLAlchemy caches this result as city.state
 
-city.state: is a State obj, established via the relationship('State') ORM mapping
-
 3, access city.state.name: simply access the .name attribute of the cached State obj
    city.state.name: state name as a string, access the name field of the associated State instance
 
 
 """
+
 # Visual Flow
 """
 1. city.state_id == 5
