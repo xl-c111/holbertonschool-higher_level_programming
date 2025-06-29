@@ -199,15 +199,16 @@ def fetch_states(username, password, database):
    ### ❌ Incorrect
 
    ```python
-   cursor.execute("SELECT * FROM users WHERE username = %s", (user_input))  # This is just a string, not a       tuple
+   cursor.execute("SELECT * FROM users WHERE username = %s", (user_input))
+   # This is just a string, not a tuple
    ```
 
-  ### ✅ Explanation
+   ### ✅ Explanation
 
-| Expression         | Type           |
-|--------------------|----------------|
-| `(user_input)`     | String         |
-| `(user_input,)`    | ✅ Tuple with 1 element |
+   | Expression         | Type           |
+   |--------------------|----------------|
+   | `(user_input)`     | String         |
+   | `(user_input,)`    | ✅ Tuple with 1 element |
 
 
 - 5.3 **Use** `.first()` **when expecting a single result** to reduce unnecessary memory and avoid list iteration:
