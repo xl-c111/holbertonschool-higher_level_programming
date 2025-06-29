@@ -129,7 +129,7 @@ db.close()
 
 ### 2.3 Problem-Solving Strategy (SQLAlchemy)
 
-#### 1. Define ORM models with `__tablename__` and column attributes
+- Define ORM models with `__tablename__` and column attributes
 #### 2. Create an engine using `create_engine()`
 ---
    ##### 2.1 URL Components Explained
