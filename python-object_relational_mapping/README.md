@@ -11,7 +11,18 @@ A concise guide to using **MySQLdb** and **SQLAlchemy ORM** in Python for intera
 - `MySQLdb` is a lightweight Python interface to MySQL.
 - Supports manual SQL query execution via cursors.
 
-### 1.2 Syntax Example
+### 1.2 Common Cursor Methods
+
+| Method              | Description                                           |
+|---------------------|-------------------------------------------------------|
+| `cursor.execute(sql)` | Executes a SQL query                               |
+| `cursor.fetchone()`   | Fetches the next single row (as a tuple)           |
+| `cursor.fetchall()`   | Fetches all remaining rows (as a list of tuples)   |
+| `cursor.fetchmany(n)` | Fetches the next `n` rows (as a list of tuples)    |
+| `cursor.close()`      | Closes the cursor                                   |
+
+
+### 1.3 Syntax Example
 
 ```python
 import MySQLdb
@@ -30,7 +41,7 @@ db.close()
 ```
 ---
 
-### 1.3 Problem-Solving Steps (MySQLdb)
+### 1.4 Problem-Solving Steps (MySQLdb)
 
 1. Connect to MySQL using `MySQLdb.connect()`
 2. Create a cursor with `cursor()`
