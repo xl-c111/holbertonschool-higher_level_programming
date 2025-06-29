@@ -43,3 +43,29 @@ if __name__ == "__main__":
     database = sys.argv[3]
 
     get_state_with_a(username, password, database)
+
+
+"""
+states = session.query(State).filter(State.name.like('%a%')).order_by(State.id.asc()).all()
+
+- State: a SQLALchemy ORM model class --> represents 'states' table in the database
+
+- State.name: column attributes (represents name column) defined on the model(for filtering and ordering)
+
+- State.id.asc(): ASC order by id column 
+
+- session.query(State): 
+        - Syntax: session.query(obj)
+        - create a SQL query obj for the State class
+        - it doesn't run the query yet, it's just a query blueprint that you can later refine with .filter() .order_by()
+
+- .like('%a%'): matches the string that contains 'a'
+        - .like(...): string pattern matching method
+        - '%a%': % means any chars, %a% means 'contains a' 
+
+- .filter(...) WHERE clause
+
+- .order_by(...) ORDER BY clause
+
+- .all(): run the query and return a list of State insctances 
+"""

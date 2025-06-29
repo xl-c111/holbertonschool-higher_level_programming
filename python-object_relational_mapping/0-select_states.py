@@ -7,13 +7,6 @@ and prints them ordered by the 'id' column in ascending order.
 Usage:
     ./0-select_states.py <username> <password> <database>
 
-Arguments:
-    username    MySQL username
-    password    MySQL password
-    database    Name of the database to connect to
-
-Example:
-    ./0-select_states.py root mypassword hbtn_0e_0_usa
 """
 import MySQLdb
 import sys

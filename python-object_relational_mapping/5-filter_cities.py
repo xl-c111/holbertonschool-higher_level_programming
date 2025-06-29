@@ -60,6 +60,7 @@ if __name__ == "__main__":
    - for loop iterates each row (which is a tuple)
    - row[1] refers to the second column in each row(index 1), which is city's name 
    - cities = [] collects all cities'name into a new list
+   
 2, (", ".join(cities))
    Syntax: "separator".join(list) ---> returns a single string made by joining all elements of the list using the given seperator
    e.g.,  ", ".join(['New York', 'Los Angeles', 'Chicago'])
