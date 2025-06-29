@@ -247,20 +247,7 @@ Understanding how to model **relationships between tables** is essential when us
 | Many-to-One       | Many records in table B are related to **one** record in table A | Each City belongs to one State |
 
 
-### 4.2 Logical View
-```
-One-to-Many (State → Cities):
-┌────────────┐ ┌────────────┐
-│ State      │ │ City       │
-│ id = 1 │◀───▶│ state_id=1 │
-│ name="CA"  │ │ name="LA"  │
-└────────────┘ └────────────┘
-
-City.state is Many-to-One
-State.cities is One-to-Many
-```
-
-### 4.3 SQLAlchemy Syntax
+### 4.2 SQLAlchemy Syntax
 
 #### ✅ One-to-Many: in the `State` class
 
@@ -273,7 +260,7 @@ class State(Base):
     # One-to-Many: A state has many cities
     cities = relationship("City", back_populates="state")
 ```
-#### ✅ One-to-Many: in the `State` class
+#### ✅ One-to-Many: in the `City` class
 ```python
 class City(Base):
     __tablename__ = 'cities'
@@ -284,7 +271,7 @@ class City(Base):
     # Many-to-One: Each city belongs to one state
     state = relationship("State", back_populates="cities")
 ```
-### 4.4 Comparison Table: One-to-Many vs. Many-to-One
+### 4.3 Comparison Table: One-to-Many vs. Many-to-One
 
 | Feature              | One-to-Many (`State → cities`) | Many-to-One (`City → state`)        |
 |----------------------|---------------------------------|--------------------------------------|
@@ -294,7 +281,7 @@ class City(Base):
 | Access direction     | `state.cities` → list           | `city.state` → single object         |
 | `back_populates`     | `"state"`                       | `"cities"`                           |
 
-### 4.5 Summary
+### 4.4 Summary
 
 - **One-to-Many** allows a parent to access all related children via a **list**.
   - Example: `state.cities`
