@@ -22,13 +22,13 @@ def list_all_State_and_City_objs(username, password, database):
         username, password, database), pool_pre_ping=True)
 
     Base.metadata.create_all(engine)
-
     Session = sessionmaker(bind=engine)
     session = Session()
 
     states = session.query(State).order_by(State.id.asc()).all()
     for state in states:
         print("{}: {}".format(state.id, state.name))
+        # loop through all City objs that are related to current State
         for city in state.cities:
             print("    {}: {}".format(city.id, city.name))
 
@@ -44,3 +44,13 @@ if __name__ == "__main__":
     database = sys.argv[3]
 
     list_all_State_and_City_objs(username, password, database)
+
+
+"""
+state.cities: 
+- state: a State obj, it represents a row in the states table
+         e.g., State(id=1, name="California")
+- .cities: is a relationship attribute in the State class using relationship()
+           it returns a list of City objs that are related to the particular state
+           they are all cities where city.state_id = state.id
+"""

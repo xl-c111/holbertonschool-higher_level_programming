@@ -33,6 +33,7 @@ def create_a_state_with_city(username, password, database):
     session.add(new_state)
     session.commit()
 
+    # create a City obj with name and linked state
     new_city = City(name="San Francisco", state=new_state)
     session.add(new_city)
     session.commit()
@@ -49,3 +50,11 @@ if __name__ == "__main__":
     database = sys.argv[3]
 
     create_a_state_with_city(username, password, database)
+
+
+"""
+state=new_state: assign the state relationship of the city to a State obj(named new_state)
+                 City has a Foreign_key(state_id) and a relationship to State
+                 this line will establish the ORM link between new_state and new_city
+                 
+"""

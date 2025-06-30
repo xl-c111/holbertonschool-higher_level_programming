@@ -41,7 +41,7 @@ def get_states_by_name(username, password, database, state_name):
 if __name__ == "__main__":
     if len(sys.argv) != 5:
         print(
-            "Usage: .3-my_safe_filter_states.py <username> <password> """
+            "Usage: /.3-my_safe_filter_states.py <username> <password> """
             "<database> 'state_name'"
         )
         sys.exit(1)
