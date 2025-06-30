@@ -15,16 +15,6 @@ class City(Base):
                 nullable=False, primary_key=True)
     name = Column(String(128), nullable=False)
     state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
-    # define a class attribute that represents the ORM level link from a City obj to its related State obj
+    # define a class attribute that represents the ORM level link from a
+    # City obj to its related State obj
     state = relationship("State", back_populates="cities")
-
-
-"""
-Base.metadata.create_all(engine): scan all ORM models that inherit from Base and 
-                                  create corresponding tables in the database 
-
-- Base: the declarative base class used to define ORM models
-- Base.metadata: a container that holds all table metadata(table names, columns, constrains) collected from models
-- .create_all(engine): create an actual table in the target database, using provided engine connection
-
-"""
