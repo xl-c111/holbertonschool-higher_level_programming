@@ -234,20 +234,28 @@ query.filter(User.name.like('A%'))
 query.filter(User.name.ilike('a%'))
 ```
 ---
-## 4 One-to-Many vs. Many-to-One in SQLAlchemy
-
-Understanding how to model **relationships between tables** is essential when using SQLAlchemy ORM. The most common pattern is a **one-to-many** and its reverse, **many-to-one**.
+## 4 SQLAlchemy `relationship()` Summary
 
 ---
-### 4.1 Concepts
+### 4.1 Relationship Types and Use Cases
 
-| Relationship Type | Description | Example |
-|-------------------|-------------|---------|
-| One-to-Many       | One record in table A is related to **many** records in table B | One State has many Cities |
-| Many-to-One       | Many records in table B are related to **one** record in table A | Each City belongs to one State |
+| Relationship Type | Example                      | Description                              |
+|-------------------|------------------------------|------------------------------------------|
+| One-to-Many       | `State` ↔ multiple `City`    | One state has many cities                |
+| Many-to-One       | multiple `City` ↔ one `State`| Many cities belong to one state          |
+| Many-to-Many      | `Student` ↔ `Course`         | Requires an association table to connect |
 
-
-### 4.2 SQLAlchemy Syntax
+### 4.2 Syntax & Parameters
+```python
+relationship("TargetClass", back_populates="attribute", ...)
+```
+| Parameter        | Description                                                                   |
+| ---------------- | ----------------------------------------------------------------------------- |
+| `"TargetClass"`  | The related class name, as a string or class object                           |
+| `back_populates` | Used to set up a two-way relationship (linked attribute on the other side)    |
+| `foreign_keys`   | (Optional) Specifies which column(s) are used as foreign keys                 |
+| `cascade`        | (Optional) Defines how delete/update operations are propagated                |
+| `lazy`           | (Optional) Controls how related objects are loaded (e.g., `select`, `joined`) |
 
 #### ✅ One-to-Many: in the `State` class
 
@@ -271,23 +279,12 @@ class City(Base):
     # Many-to-One: Each city belongs to one state
     state = relationship("State", back_populates="cities")
 ```
-### 4.3 Comparison Table: One-to-Many vs. Many-to-One
+### 4.3 Object-Level Logic
+- `state.cities`: Returns a list of `City` objects linked to the `State` instance.
+- `city.state`: Returns the `State` object the `City` belongs to.
+- SQLAlchemy automatically manages synchronization between both sides of the relationship.
+- `back_populates` ensures bidirectional consistency between `State` and `City`.
 
-| Feature              | One-to-Many (`State → cities`) | Many-to-One (`City → state`)        |
-|----------------------|---------------------------------|--------------------------------------|
-| Defined in class     | Parent (`State`)                | Child (`City`)                       |
-| Relationship type    | `relationship("Child")`         | `relationship("Parent")`             |
-| Foreign key needed   | ❌ No                            | ✅ Yes (`ForeignKey`)                |
-| Access direction     | `state.cities` → list           | `city.state` → single object         |
-| `back_populates`     | `"state"`                       | `"cities"`                           |
-
-### 4.4 Summary
-
-- **One-to-Many** allows a parent to access all related children via a **list**.
-  - Example: `state.cities`
-- **Many-to-One** allows a child to access its parent via a **single object**.
-  - Example: `city.state`
-- Both sides should be linked using `back_populates` for clean and consistent **bidirectional access**.
 ---
 
 ## 5 MySQLdb vs SQLAlchemy Comparison
