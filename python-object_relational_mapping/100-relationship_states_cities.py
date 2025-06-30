@@ -23,7 +23,7 @@ def create_a_state_with_city(username, password, database):
         username, password, database), pool_pre_ping=True)
 
     # create all tables in the database that are defined by your models
-    # associated with Base
+    # associated with Base if thet don't exist
     Base.metadata.create_all(engine)
 
     Session = sessionmaker(bind=engine)
