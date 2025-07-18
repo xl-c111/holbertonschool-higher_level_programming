@@ -11,7 +11,7 @@ if (!isNaN(num)) {
   console.log('Missing size');
 }
 
-// Print a sqaure using nested for loop
+// Print a square using nested for loop
 /*
 if (!isNaN(num)) {
   for (let i = 0; i < num; i++) {
