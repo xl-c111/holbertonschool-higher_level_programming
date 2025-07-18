@@ -1,4 +1,4 @@
-#!/usr/bin/node
+2 - arguments.js;
 
 const line1 = 'C is fun';
 const line2 = 'Python is cool';
