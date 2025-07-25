@@ -63,8 +63,8 @@ def read_sqlite():
     connection = sqlite3.connect('products.db')
     cursor = connection.cursor()
     cursor.execute("SELECT id, name, category, price FROM products")
-    # call fetchall() on the cursor to retrieve all rows returned by SELECT query
-    # result is a list of tuple
+    # fetchall() retrieves all rows from the executed SELECT query
+    # row is a list where each element is a tuple representing one row (id, name, category, price)
     rows = cursor.fetchall()
     connection.close()
 

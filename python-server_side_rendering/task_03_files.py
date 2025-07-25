@@ -49,7 +49,9 @@ def read_csv():
 
 @app.route('/products')
 def display_products():
+    # look for the key 'source' and retrieve its value, convert it into lowercase
     source = request.args.get('source', '').lower()
+    # look for the key 'id' and retrieve its value
     product_id = request.args.get('id', type=int)
     error = None
     products = []
