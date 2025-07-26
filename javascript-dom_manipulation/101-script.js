@@ -4,13 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const hello = document.getElementById('hello');
 
   translateButton.addEventListener('click', function () {
-    const lang = languageCode.value;
-    if (!lang) {
+    const language = languageCode.value;
+    if (!language) {
       hello.textContent = 'Please select a language';
       return;
     }
 
-    fetch(`https://hellosalut.stefanbohacek.com/?lang=${lang}`)
+    fetch(`https://hellosalut.stefanbohacek.com/?lang=${language}`)
       .then((response) => response.json())
       .then((data) => {
         hello.textContent = data.hello;
