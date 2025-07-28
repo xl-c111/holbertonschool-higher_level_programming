@@ -1,7 +1,5 @@
-def increment(n):
-    n += 1
+a = [1, 2, 3, 4]
+print(id(a))
+a += [4]
 
-
-a = 1
-increment(a)
-print(a)
+print(id(a))
