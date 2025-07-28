@@ -1,4 +1,3 @@
-a = 89
-b = a + 1
-print(id(a))
-print(id(b))
+l1 = [1, 2, 3]
+l2 = l1
+print(l1 is l2)
