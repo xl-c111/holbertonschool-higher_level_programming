@@ -1,3 +1,5 @@
-l1 = [1, 2, 3]
-l2 = l1
-print(l1 is l2)
+s1 = "Best School"
+s2 = "Best School"
+print(id(s1))
+print(id(s2))
+print(s1 is s2)
